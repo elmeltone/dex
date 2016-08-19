@@ -1,0 +1,123 @@
+/*
+Theme Name: DEX
+Author: Michael J Melton <meltonm83@gmail.com>
+*/
+
+/***** Colors ******/
+
+$background: #0E3D59;
+$complement: #32cd32;
+$anchor: #F29F05;
+$message: #F25C05;
+$emphasis: #D92525;
+$plain: #ffffff;
+
+/*
+#0E3D59 dark blue
+#88A61B green
+#F29F05 gold
+#F25C05 orange
+#D92525 red
+*/
+
+/***** Normalize ******/
+
+@import 'normalize';
+
+/***** Mixins ******/
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $spread $color;
+    -moz-box-shadow:inset $top $left $blur $spread $color;
+    box-shadow:inset $top $left $blur $spread $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $spread $color;
+    -moz-box-shadow: $top $left $blur $spread $color;
+    box-shadow: $top $left $blur $spread $color;
+  }
+}
+
+/***** General Styles ******/
+
+* {
+  @include border-radius(4px);
+}
+
+body {
+  background: lighten($background, 8%);
+  color: $complement;
+  padding: 16px;
+  text-align: center;
+}
+
+input {
+  text-align: center;
+  border: none;
+}
+
+/***** Detailed Styles ******/
+
+h2, h3, .masthead, .boards, .decks, .cards, .add {
+  margin: 4px auto;
+  padding: 4px;
+}
+
+.masthead, .boards {
+  text-decoration: underline;
+}
+
+#masthead {
+  background: $background;
+  color: $complement;
+  margin-bottom: 12px;
+  border: 2px solid $complement;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.boards, .board-input {
+  background: $complement;
+  color: $background;
+  max-width: 320px;
+  border: 2px solid $background;
+}
+
+.delete {
+  float: left;
+}
+
+.board-input {
+  font-size: 1.25rem,
+}
+
+.decks {
+  background: $background;
+  color: $complement;
+}
+
+.add {
+  border: 1px solid lighten($background, 8%);
+  background: $background;
+}
+
+.cards {
+  background: lighten($background, 8%);
+  color: $complement;
+  border: 2px solid $background;
+  text-decoration: none;
+}
+
+.card-input {
+  margin: 4px 0;
+  background: lighten($background, 8%);
+  color: $complement;
+}
