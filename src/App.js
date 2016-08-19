@@ -4,8 +4,12 @@ export default class App extends React.Component {
 
   render() {
     return (
-      //<div className="dashboard">{this.props.children}</div>
-      <div>hello</div>
+      <div>
+        <div id="masthead">
+          <h1 className='masthead'>dex</h1>
+        </div>
+        {this.props.children}
+      </div>
     );
   }
 };
