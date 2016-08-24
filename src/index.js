@@ -1,17 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router';
+import { render } from 'react-dom';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-import boards from '../utils/boards.js';
-import App from './App.js';
-import IconList from './components/IconList';
-import BoardList from './components/BoardList';
+import Main from './components/Main';
+import BoardGrid from './components/BoardGrid';
+import Board from './components/Board';
 
-ReactDOM.render(
-  <Router history={hashHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={IconList}></IndexRoute>
-      <Route path="boards(/:board)" name="boardlist" component={BoardList}></Route>
+const router = (
+  <Router history={browserHistory}>
+    <Route path='/' component={Main}>
+      <IndexRoute component={BoardGrid}></IndexRoute>
+      <Route path='/view/:boardId' component={Board}></Route>
     </Route>
-  </Router>,
-  document.getElementById('root'));
+  </Router>
+)
+
+render(router, document.getElementById('root'));
+
