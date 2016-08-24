@@ -63,6 +63,10 @@
 
 	var _reactRouter = __webpack_require__(173);
 
+	var _boards = __webpack_require__(240);
+
+	var _boards2 = _interopRequireDefault(_boards);
+
 	var _App = __webpack_require__(236);
 
 	var _App2 = _interopRequireDefault(_App);
@@ -84,7 +88,7 @@
 	    _reactRouter.Route,
 	    { path: '/', component: _App2.default },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _IconList2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { path: 'boards(:/board)', name: 'boardlist', component: _BoardList2.default })
+	    _react2.default.createElement(_reactRouter.Route, { path: 'boards(/:board)', name: 'boardlist', component: _BoardList2.default })
 	  )
 	), document.getElementById('root'));
 
@@ -27120,7 +27124,7 @@
 /* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -27153,16 +27157,12 @@
 	  }
 
 	  _createClass(IconList, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'IconList Component'
-	        )
+	        "div",
+	        { className: "icons" },
+	        this.props.children
 	      );
 	    }
 	  }]);
@@ -27225,7 +27225,7 @@
 	        "This Month",
 	        "This Year",
 	      ].map((title, i) => <Board key={i} title={title}/> );*/
-
+	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -27292,6 +27292,72 @@
 	}(_react2.default.Component);
 
 	exports.default = Board;
+
+/***/ },
+/* 240 */
+/***/ function(module, exports) {
+
+	{
+	  boards: [
+	    {
+	      title: "today",
+	      id: 1,
+	      decks: [
+	        {
+	          title: "before work",
+	          id: 1,
+	          cards: [
+	            {
+	              text: "feed the dogs",
+	              id: 2
+	            },
+	            {
+	              text: "take the trash out",
+	              id: 1
+	            },
+	          ],
+	        },
+	        {
+	          title: "after work",
+	          id: 2,
+	          cards: [
+	            {
+	              text: "walk the dogs",
+	              id: 1,
+	            },
+	            {
+	              text: "find barrel of wine to swim in",
+	              id: 2,
+	            }
+	          ],
+	        },
+	      ]
+	    },
+	    {
+	      title: "things to do tomorrow",
+	      id: 7,
+	      decks: [
+	        {
+	          title: "before work",
+	          id: 1,
+	          cards: [
+	            {
+	              text: "feed the dogs",
+	              id: 2
+	            },
+	            {
+	              text: "take the trash out",
+	              id: 1
+	            },
+	          ],
+	        }
+	      ]
+	    },
+	  ]
+	};
+
+	export default boards;
+
 
 /***/ }
 /******/ ]);

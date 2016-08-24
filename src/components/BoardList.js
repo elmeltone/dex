@@ -17,7 +17,7 @@ export default class BoardList extends React.Component {
       "This Month",
       "This Year",
     ].map((title, i) => <Board key={i} title={title}/> );*/
-
+    console.log(this.props);
     return (
       <div>
         BoardList Component
