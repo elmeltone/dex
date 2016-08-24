@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default class Main extends React.Component {
+const Main = React.createClass({
   render() {
     return (
       <div>
@@ -14,4 +14,6 @@ export default class Main extends React.Component {
       </div>
     )
   }
-}
+});
+
+export default Main;
