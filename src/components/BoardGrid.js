@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router';
+import Icon from './Icon';
 
-export default class BoardGrid extends React.Component {
+const BoardGrid = React.createClass({
   render() {
     return (
       <div className='board-grid'>
-        I am the BoardGrid.
+        {this.props.boards.map((board, i) => <Icon {...this.props} key={i} i={i} board={board} />)}
       </div>
     )
   }
-}
+});
+
+export default BoardGrid;
