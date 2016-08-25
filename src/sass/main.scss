@@ -63,6 +63,10 @@ input {
   border: none;
 }
 
+a {
+  color: $complement;
+}
+
 /***** Detailed Styles ******/
 
 h2, h3, .masthead, .boards, .decks, .cards, .add {
@@ -84,11 +88,14 @@ h2, h3, .masthead, .boards, .decks, .cards, .add {
   margin-right: auto;
 }
 
-.boards, .board-input {
+.boards, .icons, .board-input {
   background: $complement;
   color: $background;
   max-width: 320px;
   border: 2px solid $background;
+  a {
+    color: $background;
+  }
 }
 
 .delete {
@@ -96,7 +103,7 @@ h2, h3, .masthead, .boards, .decks, .cards, .add {
 }
 
 .board-input {
-  font-size: 1.25rem,
+  font-size: 1.25rem;
 }
 
 .decks {

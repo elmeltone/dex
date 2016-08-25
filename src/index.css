@@ -396,6 +396,9 @@ input {
   text-align: center;
   border: none; }
 
+a {
+  color: #32cd32; }
+
 /***** Detailed Styles ******/
 h2, h3, .masthead, .boards, .decks, .cards, .add {
   margin: 4px auto;
@@ -413,11 +416,13 @@ h2, h3, .masthead, .boards, .decks, .cards, .add {
   margin-left: auto;
   margin-right: auto; }
 
-.boards, .board-input {
+.boards, .icons, .board-input {
   background: #32cd32;
   color: #0E3D59;
   max-width: 320px;
   border: 2px solid #0E3D59; }
+  .boards a, .icons a, .board-input a {
+    color: #0E3D59; }
 
 .delete {
   float: left; }

@@ -75,7 +75,7 @@
 
 	var _BoardGrid2 = _interopRequireDefault(_BoardGrid);
 
-	var _Board = __webpack_require__(271);
+	var _Board = __webpack_require__(272);
 
 	var _Board2 = _interopRequireDefault(_Board);
 
@@ -29077,14 +29077,14 @@
 	      'div',
 	      null,
 	      _react2.default.createElement(
-	        'div',
-	        { id: 'masthead' },
+	        _reactRouter.Link,
+	        { to: '/' },
 	        _react2.default.createElement(
-	          'h1',
-	          { className: 'masthead' },
+	          'div',
+	          { id: 'masthead' },
 	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: '/' },
+	            'h1',
+	            { className: 'masthead' },
 	            'dex'
 	          )
 	        )
@@ -29116,6 +29116,10 @@
 
 	var _Icon2 = _interopRequireDefault(_Icon);
 
+	var _BoardInput = __webpack_require__(271);
+
+	var _BoardInput2 = _interopRequireDefault(_BoardInput);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var BoardGrid = _react2.default.createClass({
@@ -29128,7 +29132,8 @@
 	      { className: 'board-grid' },
 	      this.props.boards.map(function (board, i) {
 	        return _react2.default.createElement(_Icon2.default, _extends({}, _this.props, { key: i, i: i, board: board }));
-	      })
+	      }),
+	      _react2.default.createElement(_BoardInput2.default, null)
 	    );
 	  }
 	});
@@ -29178,7 +29183,19 @@
 	        { className: 'grid-figure' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'grid-icon-wrap' },
+	          { className: 'icons' },
+	          _react2.default.createElement(
+	            'span',
+	            {
+	              className: 'delete board-icon',
+	              onClick: this.handleDeleteBoard
+	            },
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              'x'
+	            )
+	          ),
 	          _react2.default.createElement(
 	            _reactRouter.Link,
 	            { to: '/view/' + this.props.board.id },
@@ -29196,6 +29213,42 @@
 
 /***/ },
 /* 271 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var BoardInput = _react2.default.createClass({
+	  displayName: "BoardInput",
+
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "board-form" },
+	      _react2.default.createElement(
+	        "form",
+	        { onSubmit: this.handleNewBoard },
+	        _react2.default.createElement("input", { className: "board-input", ref: "title", type: "text",
+	          placeholder: "new board" })
+	      )
+	    );
+	  }
+	});
+
+	exports.default = BoardInput;
+
+/***/ },
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
