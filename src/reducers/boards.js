@@ -1,7 +1,13 @@
 
 function boards(state = [], action) {
-  console.log('The boards will change');
-  console.log(state, action);
+  switch(action.type) {
+    case 'DELETE_BOARD' :
+      console.log("Deleting board!");
+      const i = action.index;
+      /*return [
+        ...
+      ]*/
+  }
   return state;
 };
 

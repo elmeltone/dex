@@ -1,5 +1,6 @@
 //add Board
 export function addBoard(boardId, title) {
+  console.log("Add board!");
   return {
     type: 'ADD_BOARD',
     boardId,

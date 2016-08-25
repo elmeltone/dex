@@ -28944,7 +28944,7 @@
 /* 264 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -28954,8 +28954,14 @@
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
 	  var action = arguments[1];
 
-	  console.log('The boards will change');
-	  console.log(state, action);
+	  switch (action.type) {
+	    case 'DELETE_BOARD':
+	      console.log("Deleting board!");
+	      var i = action.index;
+	    /*return [
+	      ...
+	    ]*/
+	  }
 	  return state;
 	};
 
@@ -29036,6 +29042,7 @@
 	exports.deleteBoard = deleteBoard;
 	//add Board
 	function addBoard(boardId, title) {
+	  console.log("Add board!");
 	  return {
 	    type: 'ADD_BOARD',
 	    boardId: boardId,
@@ -29124,6 +29131,10 @@
 
 	var BoardGrid = _react2.default.createClass({
 	  displayName: 'BoardGrid',
+	  handleAddBoard: function handleAddBoard(args) {
+	    console.log(args);
+	    this.props.addBoard(args);
+	  },
 	  render: function render() {
 	    var _this = this;
 
@@ -29133,7 +29144,7 @@
 	      this.props.boards.map(function (board, i) {
 	        return _react2.default.createElement(_Icon2.default, _extends({}, _this.props, { key: i, i: i, board: board }));
 	      }),
-	      _react2.default.createElement(_BoardInput2.default, null)
+	      _react2.default.createElement(_BoardInput2.default, _extends({ onSubmit: this.handleAddBoard, decks: [] }, this.props))
 	    );
 	  }
 	});
@@ -29188,12 +29199,12 @@
 	            'span',
 	            {
 	              className: 'delete board-icon',
-	              onClick: this.handleDeleteBoard
+	              onClick: ''
 	            },
 	            _react2.default.createElement(
 	              'div',
-	              null,
-	              'x'
+	              { className: 'delete' },
+	              '×'
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -29215,7 +29226,7 @@
 /* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -29228,18 +29239,25 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var BoardInput = _react2.default.createClass({
-	  displayName: "BoardInput",
+	  displayName: 'BoardInput',
 
-
+	  addBoard: function addBoard(e) {
+	    e.preventDefault();
+	    this.props.onSubmit({
+	      title: this.refs.title.value,
+	      decks: this.props.decks
+	    });
+	    this.refs.title.value = '';
+	  },
 	  render: function render() {
 	    return _react2.default.createElement(
-	      "div",
-	      { className: "board-form" },
+	      'div',
+	      { className: 'board-form' },
 	      _react2.default.createElement(
-	        "form",
-	        { onSubmit: this.handleNewBoard },
-	        _react2.default.createElement("input", { className: "board-input", ref: "title", type: "text",
-	          placeholder: "new board" })
+	        'form',
+	        { onSubmit: this.addBoard },
+	        _react2.default.createElement('input', { className: 'board-input', ref: 'title', type: 'text',
+	          placeholder: 'new board' })
 	      )
 	    );
 	  }
