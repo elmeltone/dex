@@ -4,8 +4,7 @@ const BoardInput = React.createClass({
   addBoard: function(e) {
     e.preventDefault();
     this.props.onSubmit({
-      title: this.refs.title.value,
-      decks: this.props.decks
+      title: this.refs.title.value
     });
     this.refs.title.value = '';
   },

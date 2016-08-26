@@ -1,10 +1,9 @@
 //add Board
-export function addBoard(boardId, title) {
+export function addBoard(board) {
   console.log("Add board!");
   return {
     type: 'ADD_BOARD',
-    boardId,
-    title
+    payload: board
   }
 }
 

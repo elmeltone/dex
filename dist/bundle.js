@@ -28944,26 +28944,29 @@
 /* 264 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 	function boards() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
 	  var action = arguments[1];
 
 	  switch (action.type) {
-	    case 'DELETE_BOARD':
-	      console.log("Deleting board!");
-	      var i = action.index;
-	    /*return [
-	      ...
-	    ]*/
+	    case 'ADD_BOARD':
+	      console.log(action);
+	      return [].concat(_toConsumableArray(state), [{
+	        title: action.payload.title,
+	        decks: []
+	      }]);
+	    default:
+	      return state;
 	  }
-	  return state;
-	};
+	}
 
 	exports.default = boards;
 
@@ -29041,12 +29044,11 @@
 	exports.addBoard = addBoard;
 	exports.deleteBoard = deleteBoard;
 	//add Board
-	function addBoard(boardId, title) {
+	function addBoard(board) {
 	  console.log("Add board!");
 	  return {
 	    type: 'ADD_BOARD',
-	    boardId: boardId,
-	    title: title
+	    payload: board
 	  };
 	}
 
@@ -29119,6 +29121,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRedux = __webpack_require__(236);
+
 	var _Icon = __webpack_require__(270);
 
 	var _Icon2 = _interopRequireDefault(_Icon);
@@ -29127,29 +29131,38 @@
 
 	var _BoardInput2 = _interopRequireDefault(_BoardInput);
 
+	var _actionCreators = __webpack_require__(267);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    boards: state.boards
+	  };
+	};
+
+	var mapActionsToDispatch = {
+	  addBoard: _actionCreators.addBoard
+	};
 
 	var BoardGrid = _react2.default.createClass({
 	  displayName: 'BoardGrid',
-	  handleAddBoard: function handleAddBoard(args) {
-	    console.log(args);
-	    this.props.addBoard(args);
-	  },
 	  render: function render() {
 	    var _this = this;
 
+	    console.log(this.props);
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'board-grid' },
 	      this.props.boards.map(function (board, i) {
 	        return _react2.default.createElement(_Icon2.default, _extends({}, _this.props, { key: i, i: i, board: board }));
 	      }),
-	      _react2.default.createElement(_BoardInput2.default, _extends({ onSubmit: this.handleAddBoard, decks: [] }, this.props))
+	      _react2.default.createElement(_BoardInput2.default, _extends({ onSubmit: this.props.addBoard, decks: [] }, this.props))
 	    );
 	  }
 	});
 
-	exports.default = BoardGrid;
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapActionsToDispatch)(BoardGrid);
 
 /***/ },
 /* 270 */
@@ -29244,8 +29257,7 @@
 	  addBoard: function addBoard(e) {
 	    e.preventDefault();
 	    this.props.onSubmit({
-	      title: this.refs.title.value,
-	      decks: this.props.decks
+	      title: this.refs.title.value
 	    });
 	    this.refs.title.value = '';
 	  },
