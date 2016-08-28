@@ -11,7 +11,6 @@ export function addBoard(board) {
 export function deleteBoard(boardId, i) {
   return {
     type: 'DELETE_BOARD',
-    boardId,
-    i
+    payload: boardId
   }
 }

@@ -28942,13 +28942,19 @@
 
 /***/ },
 /* 264 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _guid = __webpack_require__(273);
+
+	var _guid2 = _interopRequireDefault(_guid);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -28960,7 +28966,7 @@
 	    case 'ADD_BOARD':
 	      console.log(action);
 	      return [].concat(_toConsumableArray(state), [{
-	        id: state.length,
+	        id: (0, _guid2.default)(),
 	        title: action.payload.title,
 	        decks: []
 	      }]);
@@ -29057,8 +29063,7 @@
 	function deleteBoard(boardId, i) {
 	  return {
 	    type: 'DELETE_BOARD',
-	    boardId: boardId,
-	    i: i
+	    payload: boardId
 	  };
 	}
 
@@ -29328,6 +29333,22 @@
 	}(_react2.default.Component);
 
 	exports.default = Board;
+
+/***/ },
+/* 273 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function () {
+	  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+	};
+
+	;
 
 /***/ }
 /******/ ]);
