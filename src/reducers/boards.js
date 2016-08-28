@@ -3,6 +3,7 @@ function boards(state = [], action) {
     case 'ADD_BOARD':
     console.log(action);
       return [...state,{
+        id: state.length,
         title: action.payload.title,
         decks: []
       }];
