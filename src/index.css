@@ -426,6 +426,8 @@ h2, h3, .masthead, .boards, .decks, .cards, .add {
 
 .delete {
   float: left; }
+  .delete:hover {
+    cursor: pointer; }
 
 .board-input {
   font-size: 1.25rem; }
