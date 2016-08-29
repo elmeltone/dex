@@ -13,7 +13,7 @@ const router = (
     <Router history={history}>
       <Route path='/' component={App}>
         <IndexRoute component={BoardGrid}></IndexRoute>
-        <Route path='/view/:boardId' component={Board}></Route>
+        <Route path='/view/:boardId' component={Board} id=':boardId'></Route>
       </Route>
     </Router>
   </Provider>

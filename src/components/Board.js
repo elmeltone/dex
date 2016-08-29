@@ -1,23 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Deck from './Deck';
 import DeckInput from './DeckInput';
 import { addDeck, deleteDeck } from '../actions/actionCreators';
 
-export default class Board extends React.Component {
+const mapStateToProps = function(state) {
+  return {
+    boards: state.boards,
+  }
+}
+
+const BoardGrid = React.createClass({
   render() {
-    let board = 0;
-    for (var i = 0; i < this.props.boards.length; i++) {
-      if (this.props.boards[i].id == this.id) {
-        board = i;
-      };
-    };
+    let board = this.props.boards.find(board => board.id == this.props.params.boardId);
     return (
       <div className='boards'>
-        <h3>{this.props.boards[board].title}</h3>
-        {this.props.boards[board].decks.map((deck, i) => <Deck {...this.props} key={i} i={i} deck={deck} />)}
+        <h3>{board.title}</h3>
+        {board.decks.map((deck, i) => <Deck {...this.props} key={i} i={i} deck={deck} />)}
         <DeckInput onSubmit={this.props.addDeck} cards={[]} {...this.props} />
       </div>
     )
   }
-}
+});
+
+export default connect(mapStateToProps)(Board);

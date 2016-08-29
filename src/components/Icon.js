@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default class Icon extends React.Component {
+const Icon = React.createClass({
   render() {
     return (
       <figure className='grid-figure'>
@@ -19,4 +19,6 @@ export default class Icon extends React.Component {
       </figure>
     )
   }
-}
+});
+
+export default Icon;

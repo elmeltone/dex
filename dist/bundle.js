@@ -91,7 +91,7 @@
 	      _reactRouter.Route,
 	      { path: '/', component: _App2.default },
 	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _BoardGrid2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/view/:boardId', component: _Board2.default })
+	      _react2.default.createElement(_reactRouter.Route, { path: '/view/:boardId', component: _Board2.default, id: ':boardId' })
 	    )
 	  )
 	);
@@ -29262,8 +29262,6 @@
 	  value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -29272,54 +29270,36 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Icon = function (_React$Component) {
-	  _inherits(Icon, _React$Component);
-
-	  function Icon() {
-	    _classCallCheck(this, Icon);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Icon).apply(this, arguments));
-	  }
-
-	  _createClass(Icon, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'figure',
-	        { className: 'grid-figure' },
+	var Icon = _react2.default.createClass({
+	  displayName: 'Icon',
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'figure',
+	      { className: 'grid-figure' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'icons' },
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'icons' },
+	          'span',
+	          {
+	            className: 'delete board-icon',
+	            onClick: this.props.deleteBoard.bind(null, this.props.params.boardId, this.props.i)
+	          },
 	          _react2.default.createElement(
-	            'span',
-	            {
-	              className: 'delete board-icon',
-	              onClick: this.props.deleteBoard.bind(null, this.props.params.boardId, this.props.i)
-	            },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'delete' },
-	              '×'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: '/view/' + this.props.board.id },
-	            this.props.board.title
+	            'div',
+	            { className: 'delete' },
+	            '×'
 	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/view/' + this.props.board.id },
+	          this.props.board.title
 	        )
-	      );
-	    }
-	  }]);
-
-	  return Icon;
-	}(_react2.default.Component);
+	      )
+	    );
+	  }
+	});
 
 	exports.default = Icon;
 
@@ -29377,11 +29357,11 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(236);
 
 	var _reactRouter = __webpack_require__(173);
 
@@ -29397,52 +29377,37 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    boards: state.boards
+	  };
+	};
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	var BoardGrid = _react2.default.createClass({
+	  displayName: 'BoardGrid',
+	  render: function render() {
+	    var _this = this;
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Board = function (_React$Component) {
-	  _inherits(Board, _React$Component);
-
-	  function Board() {
-	    _classCallCheck(this, Board);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Board).apply(this, arguments));
+	    var board = this.props.boards.find(function (board) {
+	      return board.id == _this.props.params.boardId;
+	    });
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'boards' },
+	      _react2.default.createElement(
+	        'h3',
+	        null,
+	        board.title
+	      ),
+	      board.decks.map(function (deck, i) {
+	        return _react2.default.createElement(_Deck2.default, _extends({}, _this.props, { key: i, i: i, deck: deck }));
+	      }),
+	      _react2.default.createElement(_DeckInput2.default, _extends({ onSubmit: this.props.addDeck, cards: [] }, this.props))
+	    );
 	  }
+	});
 
-	  _createClass(Board, [{
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      var board = 0;
-	      for (var i = 0; i < this.props.boards.length; i++) {
-	        if (this.props.boards[i].id == this.id) {
-	          board = i;
-	        };
-	      };
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'boards' },
-	        _react2.default.createElement(
-	          'h3',
-	          null,
-	          this.props.boards[board].title
-	        ),
-	        this.props.boards[board].decks.map(function (deck, i) {
-	          return _react2.default.createElement(_Deck2.default, _extends({}, _this2.props, { key: i, i: i, deck: deck }));
-	        }),
-	        _react2.default.createElement(_DeckInput2.default, _extends({ onSubmit: this.props.addDeck, cards: [] }, this.props))
-	      );
-	    }
-	  }]);
-
-	  return Board;
-	}(_react2.default.Component);
-
-	exports.default = Board;
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Board);
 
 /***/ },
 /* 274 */
@@ -29454,8 +29419,6 @@
 	  value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -29464,34 +29427,16 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Deck = function (_React$Component) {
-	  _inherits(Deck, _React$Component);
-
-	  function Deck() {
-	    _classCallCheck(this, Deck);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Deck).apply(this, arguments));
+	var Deck = _react2.default.createClass({
+	  displayName: 'Deck',
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'decks' },
+	      'I am a Deck.'
+	    );
 	  }
-
-	  _createClass(Deck, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'decks' },
-	        'I am a Deck.'
-	      );
-	    }
-	  }]);
-
-	  return Deck;
-	}(_react2.default.Component);
+	});
 
 	exports.default = Deck;
 
