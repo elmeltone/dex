@@ -9,8 +9,10 @@ export function addBoard(board) {
 
 //delete Board
 export function deleteBoard(boardId, i) {
+  console.log("Deleting a board");
   return {
     type: 'DELETE_BOARD',
-    payload: boardId
+    i,
+    boardId
   }
 }

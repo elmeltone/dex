@@ -67,15 +67,15 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _App = __webpack_require__(266);
+	var _App = __webpack_require__(267);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _BoardGrid = __webpack_require__(269);
+	var _BoardGrid = __webpack_require__(270);
 
 	var _BoardGrid2 = _interopRequireDefault(_BoardGrid);
 
-	var _Board = __webpack_require__(272);
+	var _Board = __webpack_require__(273);
 
 	var _Board2 = _interopRequireDefault(_Board);
 
@@ -28538,7 +28538,7 @@
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _boards = __webpack_require__(265);
+	var _boards = __webpack_require__(266);
 
 	var _boards2 = _interopRequireDefault(_boards);
 
@@ -28950,7 +28950,7 @@
 	  value: true
 	});
 
-	var _guid = __webpack_require__(273);
+	var _guid = __webpack_require__(265);
 
 	var _guid2 = _interopRequireDefault(_guid);
 
@@ -28970,6 +28970,9 @@
 	        title: action.payload.title,
 	        decks: []
 	      }]);
+	    case 'DELETE_BOARD':
+	      console.log(action);
+	      return [].concat(_toConsumableArray(state.slice(0, action.i)), _toConsumableArray(state.slice(action.i + 1)));
 	    default:
 	      return state;
 	  }
@@ -28986,21 +28989,40 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	exports.default = function () {
+	  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+	};
+
+	;
+
+/***/ },
+/* 266 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	var boards = [{
 	  "title": "things to do",
-	  "id": "0"
+	  "id": "0",
+	  "decks": []
 	}, {
 	  "title": "things in progress",
-	  "id": "1"
+	  "id": "1",
+	  "decks": []
 	}, {
 	  "title": "things accomplished",
-	  "id": "2"
+	  "id": "2",
+	  "decks": []
 	}];
 
 	exports.default = boards;
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29013,11 +29035,11 @@
 
 	var _reactRedux = __webpack_require__(236);
 
-	var _actionCreators = __webpack_require__(267);
+	var _actionCreators = __webpack_require__(268);
 
 	var actionCreators = _interopRequireWildcard(_actionCreators);
 
-	var _Main = __webpack_require__(268);
+	var _Main = __webpack_require__(269);
 
 	var _Main2 = _interopRequireDefault(_Main);
 
@@ -29040,10 +29062,10 @@
 	exports.default = App;
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -29061,14 +29083,16 @@
 
 	//delete Board
 	function deleteBoard(boardId, i) {
+	  console.log("Deleting a board");
 	  return {
 	    type: 'DELETE_BOARD',
-	    payload: boardId
+	    i: i,
+	    boardId: boardId
 	  };
 	}
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29112,7 +29136,7 @@
 	exports.default = Main;
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29129,15 +29153,15 @@
 
 	var _reactRedux = __webpack_require__(236);
 
-	var _Icon = __webpack_require__(270);
+	var _Icon = __webpack_require__(271);
 
 	var _Icon2 = _interopRequireDefault(_Icon);
 
-	var _BoardInput = __webpack_require__(271);
+	var _BoardInput = __webpack_require__(272);
 
 	var _BoardInput2 = _interopRequireDefault(_BoardInput);
 
-	var _actionCreators = __webpack_require__(267);
+	var _actionCreators = __webpack_require__(268);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29148,7 +29172,8 @@
 	};
 
 	var mapActionsToDispatch = {
-	  addBoard: _actionCreators.addBoard
+	  addBoard: _actionCreators.addBoard,
+	  deleteBoard: _actionCreators.deleteBoard
 	};
 
 	var BoardGrid = _react2.default.createClass({
@@ -29171,7 +29196,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapActionsToDispatch)(BoardGrid);
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29218,7 +29243,7 @@
 	            'span',
 	            {
 	              className: 'delete board-icon',
-	              onClick: ''
+	              onClick: this.props.deleteBoard.bind(null, this.props.params.boardId, this.props.i)
 	            },
 	            _react2.default.createElement(
 	              'div',
@@ -29242,7 +29267,7 @@
 	exports.default = Icon;
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29284,7 +29309,7 @@
 	exports.default = BoardInput;
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29333,22 +29358,6 @@
 	}(_react2.default.Component);
 
 	exports.default = Board;
-
-/***/ },
-/* 273 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	exports.default = function () {
-	  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-	};
-
-	;
 
 /***/ }
 /******/ ]);

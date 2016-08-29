@@ -8,7 +8,7 @@ export default class Icon extends React.Component {
         {<div className='icons'>
           <span
             className="delete board-icon"
-            onClick=''
+            onClick={this.props.deleteBoard.bind(null, this.props.params.boardId, this.props.i)}
           >
             <div className="delete">&times;</div>
           </span>

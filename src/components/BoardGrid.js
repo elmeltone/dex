@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Icon from './Icon';
 import BoardInput from './BoardInput';
-import { addBoard } from '../actions/actionCreators';
+import { addBoard, deleteBoard } from '../actions/actionCreators';
 
 const mapStateToProps = function(state) {
   return {
@@ -11,7 +11,8 @@ const mapStateToProps = function(state) {
 }
 
 const mapActionsToDispatch = {
-  addBoard
+  addBoard,
+  deleteBoard
 }
 
 const BoardGrid = React.createClass({
