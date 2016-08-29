@@ -29006,17 +29006,53 @@
 	  value: true
 	});
 	var boards = [{
-	  "title": "things to do",
+	  "title": "Home Improvement",
 	  "id": "0",
-	  "decks": []
+	  "decks": [{
+	    "title": "Today",
+	    "id": "0",
+	    "cards": []
+	  }, {
+	    "title": "This Week",
+	    "id": "1",
+	    "cards": []
+	  }, {
+	    "title": "This Month",
+	    "id": "2",
+	    "cards": []
+	  }]
 	}, {
-	  "title": "things in progress",
+	  "title": "Work Projects",
 	  "id": "1",
-	  "decks": []
+	  "decks": [{
+	    "title": "Priorities",
+	    "id": "0",
+	    "cards": []
+	  }, {
+	    "title": "Proposals",
+	    "id": "1",
+	    "cards": []
+	  }, {
+	    "title": "Brainstorms",
+	    "id": "2",
+	    "cards": []
+	  }]
 	}, {
-	  "title": "things accomplished",
+	  "title": "Go Team!",
 	  "id": "2",
-	  "decks": []
+	  "decks": [{
+	    "title": "Strategy vs Wildcats",
+	    "id": "0",
+	    "cards": []
+	  }, {
+	    "title": "Season Goals",
+	    "id": "1",
+	    "cards": []
+	  }, {
+	    "title": "Tailgating Ideas",
+	    "id": "2",
+	    "cards": []
+	  }]
 	}];
 
 	exports.default = boards;

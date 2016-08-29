@@ -400,7 +400,7 @@ a {
   color: #32cd32; }
 
 /***** Detailed Styles ******/
-h2, h3, .masthead, .boards, .decks, .cards, .add {
+h2, h3, .masthead, .icons, .boards, .decks, .cards, .add {
   margin: 4px auto;
   padding: 4px; }
 
