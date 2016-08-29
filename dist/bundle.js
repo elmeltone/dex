@@ -29108,6 +29108,8 @@
 	});
 	exports.addBoard = addBoard;
 	exports.deleteBoard = deleteBoard;
+	exports.addDeck = addDeck;
+	exports.deleteDeck = deleteDeck;
 	//add Board
 	function addBoard(board) {
 	  console.log("Add board!");
@@ -29124,6 +29126,25 @@
 	    type: 'DELETE_BOARD',
 	    i: i,
 	    boardId: boardId
+	  };
+	}
+
+	//add Deck
+	function addDeck(deck) {
+	  console.log("Add deck!");
+	  return {
+	    type: 'ADD_DECK',
+	    payload: deck
+	  };
+	}
+
+	//delete Deck
+	function deleteDeck(deckId, i) {
+	  console.log("Deleting a deck");
+	  return {
+	    type: 'DELETE_DECK',
+	    i: i,
+	    deckId: deckId
 	  };
 	}
 
@@ -29354,6 +29375,8 @@
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
@@ -29361,6 +29384,16 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRouter = __webpack_require__(173);
+
+	var _Deck = __webpack_require__(274);
+
+	var _Deck2 = _interopRequireDefault(_Deck);
+
+	var _DeckInput = __webpack_require__(275);
+
+	var _DeckInput2 = _interopRequireDefault(_DeckInput);
+
+	var _actionCreators = __webpack_require__(268);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29382,10 +29415,21 @@
 	  _createClass(Board, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
+	      var board = 0;
+	      for (var i = 0; i < this.props.boards.length; i++) {
+	        if (this.props.boards[i].id == this.id) {
+	          board = i;
+	        };
+	      };
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'board' },
-	        'I am a Board.'
+	        { className: 'boards' },
+	        this.props.boards[board].decks.map(function (deck, i) {
+	          return _react2.default.createElement(_Deck2.default, _extends({}, _this2.props, { key: i, i: i, deck: deck }));
+	        }),
+	        _react2.default.createElement(_DeckInput2.default, _extends({ onSubmit: this.props.addDeck, cards: [] }, this.props))
 	      );
 	    }
 	  }]);
@@ -29394,6 +29438,99 @@
 	}(_react2.default.Component);
 
 	exports.default = Board;
+
+/***/ },
+/* 274 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(173);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Deck = function (_React$Component) {
+	  _inherits(Deck, _React$Component);
+
+	  function Deck() {
+	    _classCallCheck(this, Deck);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Deck).apply(this, arguments));
+	  }
+
+	  _createClass(Deck, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'decks' },
+	        'I am a Deck.'
+	      );
+	    }
+	  }]);
+
+	  return Deck;
+	}(_react2.default.Component);
+
+	exports.default = Deck;
+
+/***/ },
+/* 275 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var DeckInput = _react2.default.createClass({
+	  displayName: "DeckInput",
+
+	  /*addBoard: function(e) {
+	    e.preventDefault();
+	    this.props.onSubmit({
+	      title: this.refs.title.value
+	    });
+	    this.refs.title.value = '';
+	  },*/
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "deck-form" },
+	      _react2.default.createElement(
+	        "form",
+	        { onSubmit: this.addDeck },
+	        _react2.default.createElement("input", { className: "deck-input", ref: "title", type: "text",
+	          placeholder: "new deck" })
+	      )
+	    );
+	  }
+	});
+
+	exports.default = DeckInput;
 
 /***/ }
 /******/ ]);

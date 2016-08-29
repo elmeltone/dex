@@ -16,3 +16,22 @@ export function deleteBoard(boardId, i) {
     boardId
   }
 }
+
+//add Deck
+export function addDeck(deck) {
+  console.log("Add deck!");
+  return {
+    type: 'ADD_DECK',
+    payload: deck
+  }
+}
+
+//delete Deck
+export function deleteDeck(deckId, i) {
+  console.log("Deleting a deck");
+  return {
+    type: 'DELETE_DECK',
+    i,
+    deckId
+  }
+}
