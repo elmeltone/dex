@@ -29383,8 +29383,8 @@
 	  };
 	};
 
-	var BoardGrid = _react2.default.createClass({
-	  displayName: 'BoardGrid',
+	var Board = _react2.default.createClass({
+	  displayName: 'Board',
 	  render: function render() {
 	    var _this = this;
 

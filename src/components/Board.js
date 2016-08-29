@@ -11,7 +11,7 @@ const mapStateToProps = function(state) {
   }
 }
 
-const BoardGrid = React.createClass({
+const Board = React.createClass({
   render() {
     let board = this.props.boards.find(board => board.id == this.props.params.boardId);
     return (
