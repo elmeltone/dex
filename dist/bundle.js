@@ -29426,6 +29426,11 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'boards' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          this.props.boards[board].title
+	        ),
 	        this.props.boards[board].decks.map(function (deck, i) {
 	          return _react2.default.createElement(_Deck2.default, _extends({}, _this2.props, { key: i, i: i, deck: deck }));
 	        }),

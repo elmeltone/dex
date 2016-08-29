@@ -14,6 +14,7 @@ export default class Board extends React.Component {
     };
     return (
       <div className='boards'>
+        <h3>{this.props.boards[board].title}</h3>
         {this.props.boards[board].decks.map((deck, i) => <Deck {...this.props} key={i} i={i} deck={deck} />)}
         <DeckInput onSubmit={this.props.addDeck} cards={[]} {...this.props} />
       </div>
