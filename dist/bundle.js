@@ -29027,15 +29027,30 @@
 	  "decks": [{
 	    "title": "Today",
 	    "id": "0",
-	    "cards": []
+	    "cards": [{
+	      "title": "Schedule appt with contractor",
+	      "id": "0"
+	    }, {
+	      "title": "Pick paint colors",
+	      "id": "1"
+	    }]
 	  }, {
 	    "title": "This Week",
 	    "id": "1",
-	    "cards": []
+	    "cards": [{
+	      "title": "Meet with contractor",
+	      "id": "0"
+	    }, {
+	      "title": "Clean out guest bedroom",
+	      "id": "1"
+	    }]
 	  }, {
 	    "title": "This Month",
 	    "id": "2",
-	    "cards": []
+	    "cards": [{
+	      "title": "Convert spare bedroom into MANCAVE >:D",
+	      "id": "0"
+	    }]
 	  }]
 	}, {
 	  "title": "Work Projects",
@@ -29043,7 +29058,10 @@
 	  "decks": [{
 	    "title": "Priorities",
 	    "id": "0",
-	    "cards": []
+	    "cards": [{
+	      "title": "Hire intern",
+	      "id": "0"
+	    }]
 	  }, {
 	    "title": "Proposals",
 	    "id": "1",
@@ -29051,7 +29069,13 @@
 	  }, {
 	    "title": "Brainstorms",
 	    "id": "2",
-	    "cards": []
+	    "cards": [{
+	      "title": "New project management site",
+	      "id": "0"
+	    }, {
+	      "title": "Compartmental creative space for writers",
+	      "id": "1"
+	    }]
 	  }]
 	}, {
 	  "title": "Go Team!",
@@ -29059,15 +29083,36 @@
 	  "decks": [{
 	    "title": "Strategy vs Wildcats",
 	    "id": "0",
-	    "cards": []
+	    "cards": [{
+	      "title": "Keep eye on ball",
+	      "id": "0"
+	    }, {
+	      "title": "Put best foot forward",
+	      "id": "1"
+	    }]
 	  }, {
 	    "title": "Season Goals",
 	    "id": "1",
-	    "cards": []
+	    "cards": [{
+	      "title": "Have fun",
+	      "id": "0"
+	    }, {
+	      "title": "WIN",
+	      "id": "1"
+	    }, {
+	      "title": "Take it one game at a time",
+	      "id": "2"
+	    }]
 	  }, {
 	    "title": "Tailgating Ideas",
 	    "id": "2",
-	    "cards": []
+	    "cards": [{
+	      "title": "Keep Joe away from grill",
+	      "id": "0"
+	    }, {
+	      "title": "More mardi gras beads",
+	      "id": "1"
+	    }]
 	  }]
 	}];
 	
@@ -29446,24 +29491,46 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
 	var _reactRouter = __webpack_require__(173);
 	
+	var _Card = __webpack_require__(276);
+	
+	var _Card2 = _interopRequireDefault(_Card);
+	
+	var _CardInput = __webpack_require__(277);
+	
+	var _CardInput2 = _interopRequireDefault(_CardInput);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Deck = _react2.default.createClass({
 	  displayName: 'Deck',
 	  render: function render() {
+	    var _this = this;
+	
 	    var deck = this.props.deck;
 	
 	
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'decks' },
-	      deck.title
+	      _react2.default.createElement(
+	        'h4',
+	        null,
+	        deck.title
+	      ),
+	      deck.cards.map(function (card, i) {
+	        return _react2.default.createElement(_Card2.default, _extends({}, _this.props, { key: i, i: i, card: card }));
+	      }),
+	      _react2.default.createElement(_CardInput2.default, _extends({ onSubmit: function onSubmit(card) {
+	          return _this.handleAddCard(card);
+	        }, deck: deck }, this.props))
 	    );
 	  }
 	});
@@ -29511,6 +29578,79 @@
 	});
 	
 	exports.default = DeckInput;
+
+/***/ },
+/* 276 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(173);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Card = _react2.default.createClass({
+	  displayName: 'Card',
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'cards' },
+	      'I am a Card.'
+	    );
+	  }
+	});
+	
+	exports.default = Card;
+
+/***/ },
+/* 277 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var CardInput = _react2.default.createClass({
+	  displayName: 'CardInput',
+	
+	  addDeck: function addDeck(e) {
+	    e.preventDefault();
+	    this.props.onSubmit({
+	      title: this.refs.title.value
+	    });
+	    this.refs.title.value = '';
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'card-form' },
+	      _react2.default.createElement(
+	        'form',
+	        { onSubmit: this.addCard },
+	        _react2.default.createElement('input', { className: 'card-input', ref: 'title', type: 'text',
+	          placeholder: 'new card' })
+	      )
+	    );
+	  }
+	});
+	
+	exports.default = CardInput;
 
 /***/ }
 /******/ ]);
