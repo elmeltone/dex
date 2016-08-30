@@ -18,10 +18,11 @@ export function deleteBoard(boardId, i) {
 }
 
 //add Deck
-export function addDeck(deck) {
-  console.log("Add deck!");
+export function addDeck(boardId, deck) {
+  console.log("Add deck to " + boardId);
   return {
     type: 'ADD_DECK',
+    boardId,
     payload: deck
   }
 }

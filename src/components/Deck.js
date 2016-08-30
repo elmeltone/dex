@@ -3,9 +3,11 @@ import { Link } from 'react-router';
 
 const Deck = React.createClass({
   render() {
+    const { deck } = this.props;
+
     return (
       <div className='decks'>
-        I am a Deck.
+        {deck.title}
       </div>
     )
   }

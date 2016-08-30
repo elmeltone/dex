@@ -28973,6 +28973,18 @@
 	    case 'DELETE_BOARD':
 	      console.log(action);
 	      return [].concat(_toConsumableArray(state.slice(0, action.i)), _toConsumableArray(state.slice(action.i + 1)));
+	    case 'ADD_DECK':
+	      console.log(state, action);
+
+	      var nextBoard = state[action.boardId];
+	      nextBoard.decks = [].concat(_toConsumableArray(nextBoard.decks), [action.payload]);
+	      return [].concat(_toConsumableArray(state.slice(0, action.boardId)), [nextBoard], _toConsumableArray(state.slice(action.boardId + 1)));
+
+	      return [].concat(_toConsumableArray(state), [{
+	        id: (0, _guid2.default)(),
+	        title: action.payload.title,
+	        cards: []
+	      }]);
 	    default:
 	      return state;
 	  }
@@ -29130,10 +29142,11 @@
 	}
 
 	//add Deck
-	function addDeck(deck) {
-	  console.log("Add deck!");
+	function addDeck(boardId, deck) {
+	  console.log("Add deck to " + boardId);
 	  return {
 	    type: 'ADD_DECK',
+	    boardId: boardId,
 	    payload: deck
 	  };
 	}
@@ -29379,12 +29392,20 @@
 
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
-	    boards: state.boards
+	    decks: state.decks
 	  };
+	};
+
+	var mapActionsToDispatch = {
+	  addDeck: _actionCreators.addDeck,
+	  deleteDeck: _actionCreators.deleteDeck
 	};
 
 	var Board = _react2.default.createClass({
 	  displayName: 'Board',
+	  handleAddDeck: function handleAddDeck(deck) {
+	    this.props.addDeck(this.props.params.boardId, deck);
+	  },
 	  render: function render() {
 	    var _this = this;
 
@@ -29402,12 +29423,14 @@
 	      board.decks.map(function (deck, i) {
 	        return _react2.default.createElement(_Deck2.default, _extends({}, _this.props, { key: i, i: i, deck: deck }));
 	      }),
-	      _react2.default.createElement(_DeckInput2.default, _extends({ onSubmit: this.props.addDeck, cards: [] }, this.props))
+	      _react2.default.createElement(_DeckInput2.default, _extends({ onSubmit: function onSubmit(deck) {
+	          return _this.handleAddDeck(deck);
+	        }, board: board, cards: [] }, this.props))
 	    );
 	  }
 	});
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Board);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapActionsToDispatch)(Board);
 
 /***/ },
 /* 274 */
@@ -29430,10 +29453,13 @@
 	var Deck = _react2.default.createClass({
 	  displayName: 'Deck',
 	  render: function render() {
+	    var deck = this.props.deck;
+
+
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'decks' },
-	      'I am a Deck.'
+	      deck.title
 	    );
 	  }
 	});
@@ -29444,7 +29470,7 @@
 /* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -29457,24 +29483,24 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var DeckInput = _react2.default.createClass({
-	  displayName: "DeckInput",
+	  displayName: 'DeckInput',
 
-	  /*addBoard: function(e) {
+	  addDeck: function addDeck(e) {
 	    e.preventDefault();
 	    this.props.onSubmit({
 	      title: this.refs.title.value
 	    });
 	    this.refs.title.value = '';
-	  },*/
+	  },
 	  render: function render() {
 	    return _react2.default.createElement(
-	      "div",
-	      { className: "deck-form" },
+	      'div',
+	      { className: 'deck-form' },
 	      _react2.default.createElement(
-	        "form",
+	        'form',
 	        { onSubmit: this.addDeck },
-	        _react2.default.createElement("input", { className: "deck-input", ref: "title", type: "text",
-	          placeholder: "new deck" })
+	        _react2.default.createElement('input', { className: 'deck-input', ref: 'title', type: 'text',
+	          placeholder: 'new deck' })
 	      )
 	    );
 	  }

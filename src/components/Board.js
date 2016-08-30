@@ -7,21 +7,30 @@ import { addDeck, deleteDeck } from '../actions/actionCreators';
 
 const mapStateToProps = function(state) {
   return {
-    boards: state.boards,
+    decks: state.decks,
   }
 }
 
+const mapActionsToDispatch = {
+  addDeck,
+  deleteDeck
+}
+
 const Board = React.createClass({
+  handleAddDeck(deck) {
+    this.props.addDeck(this.props.params.boardId, deck);
+  },
+
   render() {
     let board = this.props.boards.find(board => board.id == this.props.params.boardId);
     return (
       <div className='boards'>
         <h3>{board.title}</h3>
         {board.decks.map((deck, i) => <Deck {...this.props} key={i} i={i} deck={deck} />)}
-        <DeckInput onSubmit={this.props.addDeck} cards={[]} {...this.props} />
+        <DeckInput onSubmit={(deck) => this.handleAddDeck(deck)} board={board} cards={[]} {...this.props} />
       </div>
     )
   }
 });
 
-export default connect(mapStateToProps)(Board);
+export default connect(mapStateToProps, mapActionsToDispatch)(Board);
