@@ -1,5 +1,18 @@
 import guid from '../data/guid';
 
+function addDeck(boards, boardId, title){
+  return boards.map(function(board, index) {
+    if (board.id === boardId) {
+      board.decks = [...board.decks, {
+        id: guid(),
+        title: title,
+        cards: []
+      }]
+    };
+    return board;
+  });
+}
+
 function boards(state = [], action) {
   switch(action.type){
     case 'ADD_BOARD':
@@ -17,20 +30,7 @@ function boards(state = [], action) {
       ];
     case 'ADD_DECK':
       console.log(state, action);
-
-      const nextBoard = state[action.boardId];
-      nextBoard.decks = [...nextBoard.decks, action.payload];
-      return [
-        ...state.slice(0,action.boardId),
-        nextBoard,
-        ...state.slice(action.boardId + 1)
-      ];
-
-      return [...state,{
-        id: guid(),
-        title: action.payload.title,
-        cards: []
-      }];
+      return addDeck(state, action.boardId, action.payload.title);
     default:
       return state;
   }
