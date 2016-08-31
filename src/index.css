@@ -435,7 +435,7 @@ h2, h3, .masthead, .icons, .boards, .decks, .cards, .add {
 .board-input {
   font-size: 1.25rem; }
 
-.decks {
+.decks, .deck-input {
   background: #0E3D59;
   color: #32cd32; }
 
