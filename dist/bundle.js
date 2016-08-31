@@ -28971,6 +28971,15 @@
 	  });
 	}
 	
+	function deleteDeck(boards, boardId, i) {
+	  return boards.map(function (board, index) {
+	    if (board.id === boardId) {
+	      board.decks = [].concat(_toConsumableArray(board.decks.slice(0, i)), _toConsumableArray(board.decks.slice(i + 1)));
+	    };
+	    return board;
+	  });
+	}
+	
 	function boards() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
 	  var action = arguments[1];
@@ -28989,6 +28998,9 @@
 	    case 'ADD_DECK':
 	      console.log(state, action);
 	      return addDeck(state, action.boardId, action.payload.title);
+	    case 'DELETE_DECK':
+	      console.log(state, action);
+	      return deleteDeck(state, action.boardId, action.i);
 	    default:
 	      return state;
 	  }
@@ -29201,12 +29213,12 @@
 	}
 	
 	//delete Deck
-	function deleteDeck(deckId, i) {
+	function deleteDeck(boardId, i) {
 	  console.log("Deleting a deck");
 	  return {
 	    type: 'DELETE_DECK',
 	    i: i,
-	    deckId: deckId
+	    boardId: boardId
 	  };
 	}
 
@@ -29529,7 +29541,7 @@
 	        'span',
 	        {
 	          className: 'delete deck',
-	          onClick: this.props.deleteBoard.bind(null, this.props.params.boardId, this.props.i)
+	          onClick: this.props.deleteDeck.bind(null, this.props.params.boardId, this.props.i)
 	        },
 	        _react2.default.createElement(
 	          'div',

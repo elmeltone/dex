@@ -28,11 +28,11 @@ export function addDeck(boardId, deck) {
 }
 
 //delete Deck
-export function deleteDeck(deckId, i) {
+export function deleteDeck(boardId, i) {
   console.log("Deleting a deck");
   return {
     type: 'DELETE_DECK',
     i,
-    deckId
+    boardId
   }
 }

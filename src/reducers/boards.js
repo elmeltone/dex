@@ -13,6 +13,18 @@ function addDeck(boards, boardId, title){
   });
 }
 
+function deleteDeck(boards, boardId, i){
+  return boards.map(function(board, index) {
+    if (board.id === boardId) {
+      board.decks = [
+        ...board.decks.slice(0,i),
+        ...board.decks.slice(i+1)
+      ]
+    };
+    return board;
+  });
+}
+
 function boards(state = [], action) {
   switch(action.type){
     case 'ADD_BOARD':
@@ -31,6 +43,9 @@ function boards(state = [], action) {
     case 'ADD_DECK':
       console.log(state, action);
       return addDeck(state, action.boardId, action.payload.title);
+    case 'DELETE_DECK':
+      console.log(state, action);
+      return deleteDeck(state, action.boardId, action.i);
     default:
       return state;
   }
