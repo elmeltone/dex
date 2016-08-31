@@ -69,8 +69,8 @@ a {
 
 /***** Detailed Styles ******/
 
-h2, h3, .masthead, .icons, .boards, .decks, .cards, .add {
-  margin: 4px auto;
+h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
+  margin: 2px auto;
   padding: 4px;
   position: relative;
 }
@@ -127,6 +127,7 @@ h2, h3, .masthead, .icons, .boards, .decks, .cards, .add {
   color: $complement;
   border: 2px solid $background;
   text-decoration: none;
+  font-size: .9rem;
 }
 
 .card-input {

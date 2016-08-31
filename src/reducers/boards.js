@@ -1,5 +1,17 @@
 import guid from '../data/guid';
 
+function addCard(boards, boardId, i, text){
+  return boards.map(function(deck, index) {
+    if (deck.i === i) {
+      deck.cards = [...decks.cards, {
+          id: guid(),
+          text: text
+        }]
+    };
+    return deck;
+  });
+}
+
 function addDeck(boards, boardId, title){
   return boards.map(function(board, index) {
     if (board.id === boardId) {
@@ -46,6 +58,9 @@ function boards(state = [], action) {
     case 'DELETE_DECK':
       console.log(state, action);
       return deleteDeck(state, action.boardId, action.i);
+    case 'ADD_CARD':
+      console.log(state, action);
+      return addDeck(state, action.boardId, action.i, action.payload.text);
     default:
       return state;
   }

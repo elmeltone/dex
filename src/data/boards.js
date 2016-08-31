@@ -87,11 +87,11 @@ const boards = [
           "id":"0",
           "cards":[
             {
-              "title":"Keep eye on ball",
+              "text":"Keep eye on ball",
               "id":"0"
             },
             {
-              "title":"Put best foot forward",
+              "text":"Put best foot forward",
               "id":"1"
             }
           ]
@@ -101,15 +101,15 @@ const boards = [
           "id":"1",
           "cards":[
             {
-              "title":"Have fun",
+              "text":"Have fun",
               "id":"0"
             },
             {
-              "title":"WIN",
+              "text":"WIN",
               "id":"1"
             },
             {
-              "title":"Take it one game at a time",
+              "text":"Take it one game at a time",
               "id":"2"
             }
           ]
@@ -119,11 +119,11 @@ const boards = [
           "id":"2",
           "cards":[
             {
-              "title":"Keep Joe away from grill",
+              "text":"Keep Joe away from grill",
               "id":"0"
             },
             {
-              "title":"More mardi gras beads",
+              "text":"More mardi gras beads",
               "id":"1"
             }
           ]

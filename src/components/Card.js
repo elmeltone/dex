@@ -3,9 +3,16 @@ import { Link } from 'react-router';
 
 const Card = React.createClass({
   render() {
+    const { card } = this.props;
     return (
       <div className='cards'>
-        I am a Card.
+        <p>{card.text}</p>
+        <span
+            className="delete card"
+            onClick={this.props.deleteCard.bind(null, this.props.params.boardId, this.props.i)}
+          >
+          <div className="delete">&times;</div>
+        </span>
       </div>
     )
   }

@@ -36,3 +36,24 @@ export function deleteDeck(boardId, i) {
     boardId
   }
 }
+
+//add Card
+export function addCard(boardId, i, card) {
+  console.log("Add card to " + i);
+  return {
+    type: 'ADD_CARD',
+    boardId,
+    i,
+    payload: card
+  }
+}
+
+//delete Card
+export function deleteCard(boardId, i) {
+  console.log("Deleting a card");
+  return {
+    type: 'DELETE_CARD',
+    i,
+    boardId
+  }
+}

@@ -400,8 +400,8 @@ a {
   color: #32cd32; }
 
 /***** Detailed Styles ******/
-h2, h3, .masthead, .icons, .boards, .decks, .cards, .add {
-  margin: 4px auto;
+h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
+  margin: 2px auto;
   padding: 4px;
   position: relative; }
 
@@ -447,7 +447,8 @@ h2, h3, .masthead, .icons, .boards, .decks, .cards, .add {
   background: #14557c;
   color: #32cd32;
   border: 2px solid #0E3D59;
-  text-decoration: none; }
+  text-decoration: none;
+  font-size: .9rem; }
 
 .card-input {
   margin: 4px 0;

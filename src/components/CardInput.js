@@ -1,18 +1,18 @@
 import React from 'react';
 
 const CardInput = React.createClass({
-  addDeck: function(e) {
+  addCard: function(e) {
     e.preventDefault();
     this.props.onSubmit({
-      title: this.refs.title.value
+      title: this.refs.text.value
     });
-    this.refs.title.value = '';
+    this.refs.text.value = '';
   },
   render: function () {
     return (
       <div className="card-form">
         <form onSubmit={this.addCard}>
-          <input className="card-input" ref="title" type="text"
+          <input className="card-input" ref="text" type="text"
           placeholder="new card" />
         </form>
       </div>

@@ -28958,6 +28958,18 @@
 	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
+	function addCard(boards, boardId, i, text) {
+	  return boards.map(function (deck, index) {
+	    if (deck.i === i) {
+	      deck.cards = [].concat(_toConsumableArray(decks.cards), [{
+	        id: (0, _guid2.default)(),
+	        text: text
+	      }]);
+	    };
+	    return deck;
+	  });
+	}
+	
 	function addDeck(boards, boardId, title) {
 	  return boards.map(function (board, index) {
 	    if (board.id === boardId) {
@@ -29001,6 +29013,9 @@
 	    case 'DELETE_DECK':
 	      console.log(state, action);
 	      return deleteDeck(state, action.boardId, action.i);
+	    case 'ADD_CARD':
+	      console.log(state, action);
+	      return addDeck(state, action.boardId, action.i, action.payload.text);
 	    default:
 	      return state;
 	  }
@@ -29096,33 +29111,33 @@
 	    "title": "Strategy vs Wildcats",
 	    "id": "0",
 	    "cards": [{
-	      "title": "Keep eye on ball",
+	      "text": "Keep eye on ball",
 	      "id": "0"
 	    }, {
-	      "title": "Put best foot forward",
+	      "text": "Put best foot forward",
 	      "id": "1"
 	    }]
 	  }, {
 	    "title": "Season Goals",
 	    "id": "1",
 	    "cards": [{
-	      "title": "Have fun",
+	      "text": "Have fun",
 	      "id": "0"
 	    }, {
-	      "title": "WIN",
+	      "text": "WIN",
 	      "id": "1"
 	    }, {
-	      "title": "Take it one game at a time",
+	      "text": "Take it one game at a time",
 	      "id": "2"
 	    }]
 	  }, {
 	    "title": "Tailgating Ideas",
 	    "id": "2",
 	    "cards": [{
-	      "title": "Keep Joe away from grill",
+	      "text": "Keep Joe away from grill",
 	      "id": "0"
 	    }, {
-	      "title": "More mardi gras beads",
+	      "text": "More mardi gras beads",
 	      "id": "1"
 	    }]
 	  }]
@@ -29183,6 +29198,8 @@
 	exports.deleteBoard = deleteBoard;
 	exports.addDeck = addDeck;
 	exports.deleteDeck = deleteDeck;
+	exports.addCard = addCard;
+	exports.deleteCard = deleteCard;
 	//add Board
 	function addBoard(board) {
 	  console.log("Add board!");
@@ -29217,6 +29234,27 @@
 	  console.log("Deleting a deck");
 	  return {
 	    type: 'DELETE_DECK',
+	    i: i,
+	    boardId: boardId
+	  };
+	}
+	
+	//add Card
+	function addCard(boardId, i, card) {
+	  console.log("Add card to " + i);
+	  return {
+	    type: 'ADD_CARD',
+	    boardId: boardId,
+	    i: i,
+	    payload: card
+	  };
+	}
+	
+	//delete Card
+	function deleteCard(boardId, i) {
+	  console.log("Deleting a card");
+	  return {
+	    type: 'DELETE_CARD',
 	    i: i,
 	    boardId: boardId
 	  };
@@ -29509,6 +29547,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRedux = __webpack_require__(236);
+	
 	var _reactRouter = __webpack_require__(173);
 	
 	var _Card = __webpack_require__(275);
@@ -29519,15 +29559,30 @@
 	
 	var _CardInput2 = _interopRequireDefault(_CardInput);
 	
+	var _actionCreators = __webpack_require__(268);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    cards: state.cards
+	  };
+	};
+	
+	var mapActionsToDispatch = {
+	  addCard: _actionCreators.addCard,
+	  deleteCard: _actionCreators.deleteCard
+	};
 	
 	var Deck = _react2.default.createClass({
 	  displayName: 'Deck',
+	  handleAddCard: function handleAddCard(card) {
+	    this.props.addCard(this.props.params.boardId, this.props.i, card);
+	  },
 	  render: function render() {
 	    var _this = this;
 	
 	    var deck = this.props.deck;
-	
 	
 	    return _react2.default.createElement(
 	      'div',
@@ -29559,7 +29614,7 @@
 	  }
 	});
 	
-	exports.default = Deck;
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapActionsToDispatch)(Deck);
 
 /***/ },
 /* 275 */
@@ -29582,10 +29637,28 @@
 	var Card = _react2.default.createClass({
 	  displayName: 'Card',
 	  render: function render() {
+	    var card = this.props.card;
+	
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'cards' },
-	      'I am a Card.'
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        card.text
+	      ),
+	      _react2.default.createElement(
+	        'span',
+	        {
+	          className: 'delete card',
+	          onClick: this.props.deleteCard.bind(null, this.props.params.boardId, this.props.i)
+	        },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'delete' },
+	          '×'
+	        )
+	      )
 	    );
 	  }
 	});
@@ -29611,12 +29684,12 @@
 	var CardInput = _react2.default.createClass({
 	  displayName: 'CardInput',
 	
-	  addDeck: function addDeck(e) {
+	  addCard: function addCard(e) {
 	    e.preventDefault();
 	    this.props.onSubmit({
-	      title: this.refs.title.value
+	      title: this.refs.text.value
 	    });
-	    this.refs.title.value = '';
+	    this.refs.text.value = '';
 	  },
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -29625,7 +29698,7 @@
 	      _react2.default.createElement(
 	        'form',
 	        { onSubmit: this.addCard },
-	        _react2.default.createElement('input', { className: 'card-input', ref: 'title', type: 'text',
+	        _react2.default.createElement('input', { className: 'card-input', ref: 'text', type: 'text',
 	          placeholder: 'new card' })
 	      )
 	    );
