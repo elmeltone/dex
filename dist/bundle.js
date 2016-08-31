@@ -29431,7 +29431,7 @@
 	
 	var _Deck2 = _interopRequireDefault(_Deck);
 	
-	var _DeckInput = __webpack_require__(275);
+	var _DeckInput = __webpack_require__(277);
 	
 	var _DeckInput2 = _interopRequireDefault(_DeckInput);
 	
@@ -29499,11 +29499,11 @@
 	
 	var _reactRouter = __webpack_require__(173);
 	
-	var _Card = __webpack_require__(276);
+	var _Card = __webpack_require__(275);
 	
 	var _Card2 = _interopRequireDefault(_Card);
 	
-	var _CardInput = __webpack_require__(277);
+	var _CardInput = __webpack_require__(276);
 	
 	var _CardInput2 = _interopRequireDefault(_CardInput);
 	
@@ -29525,6 +29525,18 @@
 	        null,
 	        deck.title
 	      ),
+	      _react2.default.createElement(
+	        'span',
+	        {
+	          className: 'delete deck',
+	          onClick: this.props.deleteBoard.bind(null, this.props.params.boardId, this.props.i)
+	        },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'delete' },
+	          '×'
+	        )
+	      ),
 	      deck.cards.map(function (card, i) {
 	        return _react2.default.createElement(_Card2.default, _extends({}, _this.props, { key: i, i: i, card: card }));
 	      }),
@@ -29539,48 +29551,6 @@
 
 /***/ },
 /* 275 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var DeckInput = _react2.default.createClass({
-	  displayName: 'DeckInput',
-	
-	  addDeck: function addDeck(e) {
-	    e.preventDefault();
-	    this.props.onSubmit({
-	      title: this.refs.title.value
-	    });
-	    this.refs.title.value = '';
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'deck-form' },
-	      _react2.default.createElement(
-	        'form',
-	        { onSubmit: this.addDeck },
-	        _react2.default.createElement('input', { className: 'deck-input', ref: 'title', type: 'text',
-	          placeholder: 'new deck' })
-	      )
-	    );
-	  }
-	});
-	
-	exports.default = DeckInput;
-
-/***/ },
-/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29611,7 +29581,7 @@
 	exports.default = Card;
 
 /***/ },
-/* 277 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29651,6 +29621,48 @@
 	});
 	
 	exports.default = CardInput;
+
+/***/ },
+/* 277 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var DeckInput = _react2.default.createClass({
+	  displayName: 'DeckInput',
+	
+	  addDeck: function addDeck(e) {
+	    e.preventDefault();
+	    this.props.onSubmit({
+	      title: this.refs.title.value
+	    });
+	    this.refs.title.value = '';
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'deck-form' },
+	      _react2.default.createElement(
+	        'form',
+	        { onSubmit: this.addDeck },
+	        _react2.default.createElement('input', { className: 'deck-input', ref: 'title', type: 'text',
+	          placeholder: 'new deck' })
+	      )
+	    );
+	  }
+	});
+	
+	exports.default = DeckInput;
 
 /***/ }
 /******/ ]);

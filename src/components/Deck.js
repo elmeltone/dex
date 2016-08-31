@@ -10,6 +10,12 @@ const Deck = React.createClass({
     return (
       <div className='decks'>
         <h4>{deck.title}</h4>
+        <span
+            className="delete deck"
+            onClick={this.props.deleteBoard.bind(null, this.props.params.boardId, this.props.i)}
+          >
+            <div className="delete">&times;</div>
+          </span>
         {deck.cards.map((card, i) => <Card {...this.props} key={i} i={i} card={card} />)}
         <CardInput onSubmit={(card) => this.handleAddCard(card)} deck={deck} {...this.props} />
       </div>
