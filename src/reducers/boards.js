@@ -1,14 +1,15 @@
 import guid from '../data/guid';
 
 function addCard(boards, boardId, j, text){
-  return boards.map(function(deck, index) {
-    if ((board.id === boardId) && (deck.j === j)) {
-      deck.cards = [...deck.cards, {
+  return boards.map(function(board, index) {
+    console.log(board, text);
+    if (board.decks[j]) {
+      board.decks[j].cards = [...board.decks[j].cards, {
           id: guid(),
           text: text
         }]
     };
-    return deck;
+    return board;
   });
 }
 
@@ -27,17 +28,14 @@ function addDeck(boards, boardId, title){
 
 function deleteCard(boards, boardId, j, k){
   return boards.map(function(board, index) {
+    console.log('removing card',boardId,j,k);
     if (board.id === boardId) {
-      return board.decks.map(function(deck, index2) {
-        if (deck.j === j) {
-          deck.cards = [
-            ...deck.cards.slice(0,k),
-            ...deck.cards.slice(k+1)
-          ]
-        }
-      });
+      board.decks[j].cards = [
+        ...board.decks[j].cards.slice(0,k),
+        ...board.decks[j].cards.slice(k+1)
+      ]
     };
-    return boards;
+    return board;
   });
 }
 
@@ -76,7 +74,7 @@ function boards(state = [], action) {
       return deleteDeck(state, action.boardId, action.j);
     case 'ADD_CARD':
       console.log(state, action);
-      return addDeck(state, action.boardId, action.j, action.payload.text);
+      return addCard(state, action.boardId, action.j, action.payload.text);
     case 'DELETE_CARD':
       console.log(state, action);
       return deleteCard(state, action.boardId, action.j, action.k);

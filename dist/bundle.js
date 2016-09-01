@@ -28959,14 +28959,15 @@
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
 	function addCard(boards, boardId, j, text) {
-	  return boards.map(function (deck, index) {
-	    if (board.id === boardId && deck.j === j) {
-	      deck.cards = [].concat(_toConsumableArray(deck.cards), [{
+	  return boards.map(function (board, index) {
+	    console.log(board, text);
+	    if (board.decks[j]) {
+	      board.decks[j].cards = [].concat(_toConsumableArray(board.decks[j].cards), [{
 	        id: (0, _guid2.default)(),
 	        text: text
 	      }]);
 	    };
-	    return deck;
+	    return board;
 	  });
 	}
 	
@@ -28985,14 +28986,11 @@
 	
 	function deleteCard(boards, boardId, j, k) {
 	  return boards.map(function (board, index) {
+	    console.log('removing card', boardId, j, k);
 	    if (board.id === boardId) {
-	      return board.decks.map(function (deck, index2) {
-	        if (deck.j === j) {
-	          deck.cards = [].concat(_toConsumableArray(deck.cards.slice(0, k)), _toConsumableArray(deck.cards.slice(k + 1)));
-	        }
-	      });
+	      board.decks[j].cards = [].concat(_toConsumableArray(board.decks[j].cards.slice(0, k)), _toConsumableArray(board.decks[j].cards.slice(k + 1)));
 	    };
-	    return boards;
+	    return board;
 	  });
 	}
 	
@@ -29028,7 +29026,7 @@
 	      return deleteDeck(state, action.boardId, action.j);
 	    case 'ADD_CARD':
 	      console.log(state, action);
-	      return addDeck(state, action.boardId, action.j, action.payload.text);
+	      return addCard(state, action.boardId, action.j, action.payload.text);
 	    case 'DELETE_CARD':
 	      console.log(state, action);
 	      return deleteCard(state, action.boardId, action.j, action.k);
@@ -29704,7 +29702,7 @@
 	  addCard: function addCard(e) {
 	    e.preventDefault();
 	    this.props.onSubmit({
-	      title: this.refs.text.value
+	      text: this.refs.text.value
 	    });
 	    this.refs.text.value = '';
 	  },

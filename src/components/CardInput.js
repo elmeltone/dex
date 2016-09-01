@@ -4,7 +4,7 @@ const CardInput = React.createClass({
   addCard: function(e) {
     e.preventDefault();
     this.props.onSubmit({
-      title: this.refs.text.value
+      text: this.refs.text.value
     });
     this.refs.text.value = '';
   },
