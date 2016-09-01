@@ -1,3 +1,6 @@
+
+//BOARDS --------------------
+
 //add Board
 export function addBoard(board) {
   console.log("Add board!");
@@ -16,6 +19,9 @@ export function deleteBoard(boardId, i) {
     boardId
   }
 }
+
+
+//DECKS ---------------------
 
 //add Deck
 export function addDeck(boardId, deck) {
@@ -36,6 +42,9 @@ export function deleteDeck(boardId, j) {
     boardId
   }
 }
+
+
+//CARDS ---------------------
 
 //add Card
 export function addCard(boardId, j, card) {

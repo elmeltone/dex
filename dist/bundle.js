@@ -29214,6 +29214,9 @@
 	exports.deleteDeck = deleteDeck;
 	exports.addCard = addCard;
 	exports.deleteCard = deleteCard;
+	
+	//BOARDS --------------------
+	
 	//add Board
 	function addBoard(board) {
 	  console.log("Add board!");
@@ -29232,6 +29235,8 @@
 	    boardId: boardId
 	  };
 	}
+	
+	//DECKS ---------------------
 	
 	//add Deck
 	function addDeck(boardId, deck) {
@@ -29252,6 +29257,8 @@
 	    boardId: boardId
 	  };
 	}
+	
+	//CARDS ---------------------
 	
 	//add Card
 	function addCard(boardId, j, card) {
