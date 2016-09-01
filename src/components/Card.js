@@ -9,7 +9,7 @@ const Card = React.createClass({
         <p>{card.text}</p>
         <span
             className="delete card"
-            onClick={this.props.deleteCard.bind(null, this.props.params.boardId, this.props.k)}
+            onClick={this.props.deleteCard.bind(null, this.props.params.boardId, this.props.j, this.props.k)}
           >
           <div className="delete">&times;</div>
         </span>

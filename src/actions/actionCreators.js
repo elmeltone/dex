@@ -49,11 +49,12 @@ export function addCard(boardId, j, card) {
 }
 
 //delete Card
-export function deleteCard(boardId, j) {
+export function deleteCard(boardId, j, k) {
   console.log("Deleting a card");
   return {
     type: 'DELETE_CARD',
+    boardId,
     j,
-    boardId
+    k
   }
 }

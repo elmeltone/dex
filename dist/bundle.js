@@ -28983,6 +28983,19 @@
 	  });
 	}
 	
+	function deleteCard(boards, boardId, j, k) {
+	  return boards.map(function (board, index) {
+	    if (board.id === boardId) {
+	      return board.decks.map(function (deck, index2) {
+	        if (deck.j === j) {
+	          deck.cards = [].concat(_toConsumableArray(deck.cards.slice(0, k)), _toConsumableArray(deck.cards.slice(k + 1)));
+	        }
+	      });
+	    };
+	    return boards;
+	  });
+	}
+	
 	function deleteDeck(boards, boardId, j) {
 	  return boards.map(function (board, index) {
 	    if (board.id === boardId) {
@@ -29018,7 +29031,7 @@
 	      return addDeck(state, action.boardId, action.j, action.payload.text);
 	    case 'DELETE_CARD':
 	      console.log(state, action);
-	      return deleteCard(state, action.boardId, action.j);
+	      return deleteCard(state, action.boardId, action.j, action.k);
 	    default:
 	      return state;
 	  }
@@ -29254,12 +29267,13 @@
 	}
 	
 	//delete Card
-	function deleteCard(boardId, j) {
+	function deleteCard(boardId, j, k) {
 	  console.log("Deleting a card");
 	  return {
 	    type: 'DELETE_CARD',
+	    boardId: boardId,
 	    j: j,
-	    boardId: boardId
+	    k: k
 	  };
 	}
 
@@ -29654,7 +29668,7 @@
 	        'span',
 	        {
 	          className: 'delete card',
-	          onClick: this.props.deleteCard.bind(null, this.props.params.boardId, this.props.k)
+	          onClick: this.props.deleteCard.bind(null, this.props.params.boardId, this.props.j, this.props.k)
 	        },
 	        _react2.default.createElement(
 	          'div',
