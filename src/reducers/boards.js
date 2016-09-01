@@ -1,9 +1,9 @@
 import guid from '../data/guid';
 
-function addCard(boards, boardId, i, text){
+function addCard(boards, boardId, j, text){
   return boards.map(function(deck, index) {
-    if (deck.i === i) {
-      deck.cards = [...decks.cards, {
+    if ((board.id === boardId) && (deck.j === j)) {
+      deck.cards = [...deck.cards, {
           id: guid(),
           text: text
         }]
@@ -25,12 +25,12 @@ function addDeck(boards, boardId, title){
   });
 }
 
-function deleteDeck(boards, boardId, i){
+function deleteDeck(boards, boardId, j){
   return boards.map(function(board, index) {
     if (board.id === boardId) {
       board.decks = [
-        ...board.decks.slice(0,i),
-        ...board.decks.slice(i+1)
+        ...board.decks.slice(0,j),
+        ...board.decks.slice(j+1)
       ]
     };
     return board;
@@ -57,10 +57,13 @@ function boards(state = [], action) {
       return addDeck(state, action.boardId, action.payload.title);
     case 'DELETE_DECK':
       console.log(state, action);
-      return deleteDeck(state, action.boardId, action.i);
+      return deleteDeck(state, action.boardId, action.j);
     case 'ADD_CARD':
       console.log(state, action);
-      return addDeck(state, action.boardId, action.i, action.payload.text);
+      return addDeck(state, action.boardId, action.j, action.payload.text);
+    case 'DELETE_CARD':
+      console.log(state, action);
+      return deleteCard(state, action.boardId, action.j);
     default:
       return state;
   }

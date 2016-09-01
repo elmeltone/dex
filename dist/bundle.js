@@ -28958,10 +28958,10 @@
 	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
-	function addCard(boards, boardId, i, text) {
+	function addCard(boards, boardId, j, text) {
 	  return boards.map(function (deck, index) {
-	    if (deck.i === i) {
-	      deck.cards = [].concat(_toConsumableArray(decks.cards), [{
+	    if (board.id === boardId && deck.j === j) {
+	      deck.cards = [].concat(_toConsumableArray(deck.cards), [{
 	        id: (0, _guid2.default)(),
 	        text: text
 	      }]);
@@ -28983,10 +28983,10 @@
 	  });
 	}
 	
-	function deleteDeck(boards, boardId, i) {
+	function deleteDeck(boards, boardId, j) {
 	  return boards.map(function (board, index) {
 	    if (board.id === boardId) {
-	      board.decks = [].concat(_toConsumableArray(board.decks.slice(0, i)), _toConsumableArray(board.decks.slice(i + 1)));
+	      board.decks = [].concat(_toConsumableArray(board.decks.slice(0, j)), _toConsumableArray(board.decks.slice(j + 1)));
 	    };
 	    return board;
 	  });
@@ -29012,10 +29012,13 @@
 	      return addDeck(state, action.boardId, action.payload.title);
 	    case 'DELETE_DECK':
 	      console.log(state, action);
-	      return deleteDeck(state, action.boardId, action.i);
+	      return deleteDeck(state, action.boardId, action.j);
 	    case 'ADD_CARD':
 	      console.log(state, action);
-	      return addDeck(state, action.boardId, action.i, action.payload.text);
+	      return addDeck(state, action.boardId, action.j, action.payload.text);
+	    case 'DELETE_CARD':
+	      console.log(state, action);
+	      return deleteCard(state, action.boardId, action.j);
 	    default:
 	      return state;
 	  }
@@ -29055,27 +29058,27 @@
 	    "title": "Today",
 	    "id": "0",
 	    "cards": [{
-	      "title": "Schedule appt with contractor",
+	      "text": "Schedule appt with contractor",
 	      "id": "0"
 	    }, {
-	      "title": "Pick paint colors",
+	      "text": "Pick paint colors",
 	      "id": "1"
 	    }]
 	  }, {
 	    "title": "This Week",
 	    "id": "1",
 	    "cards": [{
-	      "title": "Meet with contractor",
+	      "text": "Meet with contractor",
 	      "id": "0"
 	    }, {
-	      "title": "Clean out guest bedroom",
+	      "text": "Clean out guest bedroom",
 	      "id": "1"
 	    }]
 	  }, {
 	    "title": "This Month",
 	    "id": "2",
 	    "cards": [{
-	      "title": "Convert spare bedroom into MANCAVE >:D",
+	      "text": "Convert spare bedroom into MANCAVE >:D",
 	      "id": "0"
 	    }]
 	  }]
@@ -29086,7 +29089,7 @@
 	    "title": "Priorities",
 	    "id": "0",
 	    "cards": [{
-	      "title": "Hire intern",
+	      "text": "Hire intern",
 	      "id": "0"
 	    }]
 	  }, {
@@ -29097,10 +29100,10 @@
 	    "title": "Brainstorms",
 	    "id": "2",
 	    "cards": [{
-	      "title": "New project management site",
+	      "text": "New project management site",
 	      "id": "0"
 	    }, {
-	      "title": "Compartmental creative space for writers",
+	      "text": "Compartmental creative space for writers",
 	      "id": "1"
 	    }]
 	  }]
@@ -29230,32 +29233,32 @@
 	}
 	
 	//delete Deck
-	function deleteDeck(boardId, i) {
+	function deleteDeck(boardId, j) {
 	  console.log("Deleting a deck");
 	  return {
 	    type: 'DELETE_DECK',
-	    i: i,
+	    j: j,
 	    boardId: boardId
 	  };
 	}
 	
 	//add Card
-	function addCard(boardId, i, card) {
-	  console.log("Add card to " + i);
+	function addCard(boardId, j, card) {
+	  console.log("Add card to " + j);
 	  return {
 	    type: 'ADD_CARD',
 	    boardId: boardId,
-	    i: i,
+	    j: j,
 	    payload: card
 	  };
 	}
 	
 	//delete Card
-	function deleteCard(boardId, i) {
+	function deleteCard(boardId, j) {
 	  console.log("Deleting a card");
 	  return {
 	    type: 'DELETE_CARD',
-	    i: i,
+	    j: j,
 	    boardId: boardId
 	  };
 	}
@@ -29519,8 +29522,8 @@
 	        null,
 	        board.title
 	      ),
-	      board.decks.map(function (deck, i) {
-	        return _react2.default.createElement(_Deck2.default, _extends({}, _this.props, { key: i, i: i, deck: deck }));
+	      board.decks.map(function (deck, j) {
+	        return _react2.default.createElement(_Deck2.default, _extends({}, _this.props, { key: j, j: j, deck: deck }));
 	      }),
 	      _react2.default.createElement(_DeckInput2.default, _extends({ onSubmit: function onSubmit(deck) {
 	          return _this.handleAddDeck(deck);
@@ -29577,7 +29580,7 @@
 	var Deck = _react2.default.createClass({
 	  displayName: 'Deck',
 	  handleAddCard: function handleAddCard(card) {
-	    this.props.addCard(this.props.params.boardId, this.props.i, card);
+	    this.props.addCard(this.props.params.boardId, this.props.j, card);
 	  },
 	  render: function render() {
 	    var _this = this;
@@ -29596,7 +29599,7 @@
 	        'span',
 	        {
 	          className: 'delete deck',
-	          onClick: this.props.deleteDeck.bind(null, this.props.params.boardId, this.props.i)
+	          onClick: this.props.deleteDeck.bind(null, this.props.params.boardId, this.props.j)
 	        },
 	        _react2.default.createElement(
 	          'div',
@@ -29604,8 +29607,8 @@
 	          '×'
 	        )
 	      ),
-	      deck.cards.map(function (card, i) {
-	        return _react2.default.createElement(_Card2.default, _extends({}, _this.props, { key: i, i: i, card: card }));
+	      deck.cards.map(function (card, k) {
+	        return _react2.default.createElement(_Card2.default, _extends({}, _this.props, { key: k, k: k, card: card }));
 	      }),
 	      _react2.default.createElement(_CardInput2.default, _extends({ onSubmit: function onSubmit(card) {
 	          return _this.handleAddCard(card);
@@ -29651,7 +29654,7 @@
 	        'span',
 	        {
 	          className: 'delete card',
-	          onClick: this.props.deleteCard.bind(null, this.props.params.boardId, this.props.i)
+	          onClick: this.props.deleteCard.bind(null, this.props.params.boardId, this.props.k)
 	        },
 	        _react2.default.createElement(
 	          'div',

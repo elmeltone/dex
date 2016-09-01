@@ -18,7 +18,7 @@ const mapActionsToDispatch = {
 
 const Deck = React.createClass({
   handleAddCard(card) {
-    this.props.addCard(this.props.params.boardId, this.props.i, card);
+    this.props.addCard(this.props.params.boardId, this.props.j, card);
   },
   render() {
     const { deck } = this.props;
@@ -27,11 +27,11 @@ const Deck = React.createClass({
         <h4>{deck.title}</h4>
         <span
             className="delete deck"
-            onClick={this.props.deleteDeck.bind(null, this.props.params.boardId, this.props.i)}
+            onClick={this.props.deleteDeck.bind(null, this.props.params.boardId, this.props.j)}
           >
             <div className="delete">&times;</div>
           </span>
-        {deck.cards.map((card, i) => <Card {...this.props} key={i} i={i} card={card} />)}
+        {deck.cards.map((card, k) => <Card {...this.props} key={k} k={k} card={card} />)}
         <CardInput onSubmit={(card) => this.handleAddCard(card)} deck={deck} {...this.props} />
       </div>
     )

@@ -28,32 +28,32 @@ export function addDeck(boardId, deck) {
 }
 
 //delete Deck
-export function deleteDeck(boardId, i) {
+export function deleteDeck(boardId, j) {
   console.log("Deleting a deck");
   return {
     type: 'DELETE_DECK',
-    i,
+    j,
     boardId
   }
 }
 
 //add Card
-export function addCard(boardId, i, card) {
-  console.log("Add card to " + i);
+export function addCard(boardId, j, card) {
+  console.log("Add card to " + j);
   return {
     type: 'ADD_CARD',
     boardId,
-    i,
+    j,
     payload: card
   }
 }
 
 //delete Card
-export function deleteCard(boardId, i) {
+export function deleteCard(boardId, j) {
   console.log("Deleting a card");
   return {
     type: 'DELETE_CARD',
-    i,
+    j,
     boardId
   }
 }

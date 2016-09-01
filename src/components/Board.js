@@ -26,7 +26,7 @@ const Board = React.createClass({
     return (
       <div className='boards'>
         <h3>{board.title}</h3>
-        {board.decks.map((deck, i) => <Deck {...this.props} key={i} i={i} deck={deck} />)}
+        {board.decks.map((deck, j) => <Deck {...this.props} key={j} j={j} deck={deck} />)}
         <DeckInput onSubmit={(deck) => this.handleAddDeck(deck)} board={board} cards={[]} {...this.props} />
       </div>
     )

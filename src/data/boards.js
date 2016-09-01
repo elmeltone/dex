@@ -8,11 +8,11 @@ const boards = [
           "id":"0",
           "cards":[
             {
-              "title":"Schedule appt with contractor",
+              "text":"Schedule appt with contractor",
               "id":"0"
             },
             {
-              "title":"Pick paint colors",
+              "text":"Pick paint colors",
               "id":"1"
             }
           ]
@@ -22,11 +22,11 @@ const boards = [
           "id":"1",
           "cards":[
             {
-              "title":"Meet with contractor",
+              "text":"Meet with contractor",
               "id":"0"
             },
             {
-              "title":"Clean out guest bedroom",
+              "text":"Clean out guest bedroom",
               "id":"1"
             }
           ]
@@ -36,7 +36,7 @@ const boards = [
           "id":"2",
           "cards":[
             {
-              "title":"Convert spare bedroom into MANCAVE >:D",
+              "text":"Convert spare bedroom into MANCAVE >:D",
               "id":"0"
             }
           ]
@@ -52,7 +52,7 @@ const boards = [
           "id":"0",
           "cards":[
             {
-              "title":"Hire intern",
+              "text":"Hire intern",
               "id":"0"
             }
           ]
@@ -67,11 +67,11 @@ const boards = [
           "id":"2",
           "cards":[
             {
-              "title":"New project management site",
+              "text":"New project management site",
               "id":"0"
             },
             {
-              "title":"Compartmental creative space for writers",
+              "text":"Compartmental creative space for writers",
               "id":"1"
             }
           ]
