@@ -29402,23 +29402,23 @@
 	      'figure',
 	      { className: 'grid-figure' },
 	      _react2.default.createElement(
-	        _reactRouter.Link,
-	        { to: '/view/' + this.props.board.id },
+	        'div',
+	        { className: 'icons' },
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'icons' },
+	          'span',
+	          {
+	            className: 'delete board-icon',
+	            onClick: this.props.deleteBoard.bind(null, this.props.params.boardId, this.props.i)
+	          },
 	          _react2.default.createElement(
-	            'span',
-	            {
-	              className: 'delete board-icon',
-	              onClick: this.props.deleteBoard.bind(null, this.props.params.boardId, this.props.i)
-	            },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'delete' },
-	              '×'
-	            )
-	          ),
+	            'div',
+	            { className: 'delete' },
+	            '×'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/view/' + this.props.board.id },
 	          this.props.board.title
 	        )
 	      )

@@ -102,8 +102,10 @@ h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
 .delete {
   font-size: .75rem;
   position: absolute;
+  left: 2px;
   top: 3px;
-  left: 4px;
+  height: 100%;
+  width: 10px;
   &:hover {
     cursor: pointer;
     font-size: 1.2rem;
