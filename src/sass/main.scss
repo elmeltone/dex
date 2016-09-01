@@ -1,6 +1,6 @@
 /*
 Theme Name: DEX
-Author: Michael J Melton <meltonm83@gmail.com>
+Author: Michael J Melton <michael@meltwebs.com>
 */
 
 /***** Colors ******/
@@ -100,11 +100,14 @@ h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
 }
 
 .delete {
+  font-size: .75rem;
   position: absolute;
-  top: 2px;
+  top: 3px;
   left: 4px;
   &:hover {
     cursor: pointer;
+    font-size: 1.2rem;
+    top: 1px;
   }
 }
 
@@ -126,7 +129,6 @@ h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
   background: lighten($background, 8%);
   color: $complement;
   border: 2px solid $background;
-  text-decoration: none;
   font-size: .9rem;
 }
 
