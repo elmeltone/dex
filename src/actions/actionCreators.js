@@ -3,7 +3,7 @@
 
 //add Board
 export function addBoard(board) {
-  console.log("Add board!");
+  console.log("Adding board");
   return {
     type: 'ADD_BOARD',
     payload: board
@@ -12,7 +12,7 @@ export function addBoard(board) {
 
 //delete Board
 export function deleteBoard(boardId, i) {
-  console.log("Deleting a board");
+  console.log("Deleting board " + i);
   return {
     type: 'DELETE_BOARD',
     i,
@@ -25,7 +25,7 @@ export function deleteBoard(boardId, i) {
 
 //add Deck
 export function addDeck(boardId, deck) {
-  console.log("Add deck to " + boardId);
+  console.log("Adding deck to " + boardId);
   return {
     type: 'ADD_DECK',
     boardId,
@@ -35,7 +35,7 @@ export function addDeck(boardId, deck) {
 
 //delete Deck
 export function deleteDeck(boardId, j) {
-  console.log("Deleting a deck");
+  console.log("Deleting deck " + j);
   return {
     type: 'DELETE_DECK',
     j,
@@ -48,7 +48,7 @@ export function deleteDeck(boardId, j) {
 
 //add Card
 export function addCard(boardId, j, card) {
-  console.log("Add card to " + j);
+  console.log("Adding card to " + j);
   return {
     type: 'ADD_CARD',
     boardId,
@@ -59,7 +59,7 @@ export function addCard(boardId, j, card) {
 
 //delete Card
 export function deleteCard(boardId, j, k) {
-  console.log("Deleting a card");
+  console.log("Deleting card " + k);
   return {
     type: 'DELETE_CARD',
     boardId,

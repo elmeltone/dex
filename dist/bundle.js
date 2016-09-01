@@ -28960,7 +28960,6 @@
 	
 	function addCard(boards, boardId, j, text) {
 	  return boards.map(function (board, index) {
-	    console.log(board, text);
 	    if (board.decks[j]) {
 	      board.decks[j].cards = [].concat(_toConsumableArray(board.decks[j].cards), [{
 	        id: (0, _guid2.default)(),
@@ -28986,7 +28985,6 @@
 	
 	function deleteCard(boards, boardId, j, k) {
 	  return boards.map(function (board, index) {
-	    console.log('removing card', boardId, j, k);
 	    if (board.id === boardId) {
 	      board.decks[j].cards = [].concat(_toConsumableArray(board.decks[j].cards.slice(0, k)), _toConsumableArray(board.decks[j].cards.slice(k + 1)));
 	    };
@@ -29009,26 +29007,20 @@
 	
 	  switch (action.type) {
 	    case 'ADD_BOARD':
-	      console.log(action);
 	      return [].concat(_toConsumableArray(state), [{
 	        id: (0, _guid2.default)(),
 	        title: action.payload.title,
 	        decks: []
 	      }]);
 	    case 'DELETE_BOARD':
-	      console.log(action);
 	      return [].concat(_toConsumableArray(state.slice(0, action.i)), _toConsumableArray(state.slice(action.i + 1)));
 	    case 'ADD_DECK':
-	      console.log(state, action);
 	      return addDeck(state, action.boardId, action.payload.title);
 	    case 'DELETE_DECK':
-	      console.log(state, action);
 	      return deleteDeck(state, action.boardId, action.j);
 	    case 'ADD_CARD':
-	      console.log(state, action);
 	      return addCard(state, action.boardId, action.j, action.payload.text);
 	    case 'DELETE_CARD':
-	      console.log(state, action);
 	      return deleteCard(state, action.boardId, action.j, action.k);
 	    default:
 	      return state;
@@ -29219,7 +29211,7 @@
 	
 	//add Board
 	function addBoard(board) {
-	  console.log("Add board!");
+	  console.log("Adding board");
 	  return {
 	    type: 'ADD_BOARD',
 	    payload: board
@@ -29228,7 +29220,7 @@
 	
 	//delete Board
 	function deleteBoard(boardId, i) {
-	  console.log("Deleting a board");
+	  console.log("Deleting board " + i);
 	  return {
 	    type: 'DELETE_BOARD',
 	    i: i,
@@ -29240,7 +29232,7 @@
 	
 	//add Deck
 	function addDeck(boardId, deck) {
-	  console.log("Add deck to " + boardId);
+	  console.log("Adding deck to " + boardId);
 	  return {
 	    type: 'ADD_DECK',
 	    boardId: boardId,
@@ -29250,7 +29242,7 @@
 	
 	//delete Deck
 	function deleteDeck(boardId, j) {
-	  console.log("Deleting a deck");
+	  console.log("Deleting deck " + j);
 	  return {
 	    type: 'DELETE_DECK',
 	    j: j,
@@ -29262,7 +29254,7 @@
 	
 	//add Card
 	function addCard(boardId, j, card) {
-	  console.log("Add card to " + j);
+	  console.log("Adding card to " + j);
 	  return {
 	    type: 'ADD_CARD',
 	    boardId: boardId,
@@ -29273,7 +29265,7 @@
 	
 	//delete Card
 	function deleteCard(boardId, j, k) {
-	  console.log("Deleting a card");
+	  console.log("Deleting card " + k);
 	  return {
 	    type: 'DELETE_CARD',
 	    boardId: boardId,
@@ -29372,7 +29364,6 @@
 	  render: function render() {
 	    var _this = this;
 	
-	    console.log(this.props);
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'board-grid' },

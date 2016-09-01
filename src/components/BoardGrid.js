@@ -17,7 +17,6 @@ const mapActionsToDispatch = {
 
 const BoardGrid = React.createClass({
   render() {
-    console.log(this.props);
     return (
       <div className='board-grid'>
         {this.props.boards.map((board, i) => <Icon {...this.props} key={i} i={i} board={board} />)}
