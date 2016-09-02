@@ -12,7 +12,8 @@
     "watch": "npm run watch:sass && webpack --watch",
     "build:sass": "node-sass src/sass/main.scss src/index.css",
     "watch:sass": "nodemon -e scss -w src/sass -x 'npm run build:sass'",
-    "build:js": "webpack --config webpack.config.js"
+    "build:js": "webpack --config webpack.config.js",
+    "start": "node server.js"
   },
   "author": "Michael J Melton <michael@meltwebs.com>",
   "license": "ISC",
