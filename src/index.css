@@ -387,17 +387,22 @@ textarea {
   border-radius: 4px; }
 
 body {
-  background: #14557c;
+  background: #1e7b1e;
   color: #32cd32;
-  padding: 16px;
-  text-align: center; }
+  padding: 8px;
+  text-align: center;
+  font-size: 60px; }
 
 input {
   text-align: center;
-  border: none; }
+  border: none;
+  margin: 4px; }
 
 a {
   color: #32cd32; }
+
+figure {
+  margin: 4px; }
 
 /***** Detailed Styles ******/
 h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
@@ -409,21 +414,25 @@ h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
   text-decoration: underline; }
 
 #masthead {
-  background: #0E3D59;
+  background: #155b85;
   color: #32cd32;
-  margin-bottom: 12px;
-  border: 2px solid #32cd32;
+  margin: 16px auto 24px auto;
+  border: 1px solid #32cd32;
   width: 60%;
   margin-left: auto;
   margin-right: auto; }
 
 .boards, .icons, .board-input {
   background: #32cd32;
-  color: #0E3D59;
-  max-width: 320px;
-  border: 2px solid #0E3D59; }
+  color: #155b85;
+  width: 80%;
+  min-height: 96px;
+  border: 2px solid #155b85; }
   .boards a, .icons a, .board-input a {
-    color: #0E3D59; }
+    color: #155b85; }
+
+.icons {
+  padding-top: 40px; }
 
 .delete {
   font-size: .75rem;
@@ -438,23 +447,23 @@ h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
     top: 1px; }
 
 .board-input {
-  font-size: 1.25rem; }
+  width: 60%; }
 
 .decks, .deck-input {
-  background: #0E3D59;
+  background: #155b85;
   color: #32cd32; }
 
 .add {
-  border: 1px solid #14557c;
-  background: #0E3D59; }
+  border: 1px solid #1a73a8;
+  background: #155b85; }
 
 .cards {
-  background: #14557c;
+  background: #1a73a8;
   color: #32cd32;
-  border: 2px solid #0E3D59;
+  border: 2px solid #155b85;
   font-size: .9rem; }
 
 .card-input {
   margin: 4px 0;
-  background: #14557c;
+  background: #1a73a8;
   color: #32cd32; }

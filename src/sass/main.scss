@@ -5,7 +5,7 @@ Author: Michael J Melton <michael@meltwebs.com>
 
 /***** Colors ******/
 
-$background: #0E3D59;
+$background: lighten(#0E3D59, 10%);
 $complement: #32cd32;
 $anchor: #F29F05;
 $message: #F25C05;
@@ -52,19 +52,25 @@ $plain: #ffffff;
 }
 
 body {
-  background: lighten($background, 8%);
+  background: darken($complement, 20%);
   color: $complement;
-  padding: 16px;
+  padding: 8px;
   text-align: center;
+  font-size: 60px;
 }
 
 input {
   text-align: center;
   border: none;
+  margin: 4px;
 }
 
 a {
   color: $complement;
+}
+
+figure {
+  margin: 4px;
 }
 
 /***** Detailed Styles ******/
@@ -82,8 +88,8 @@ h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
 #masthead {
   background: $background;
   color: $complement;
-  margin-bottom: 12px;
-  border: 2px solid $complement;
+  margin: 16px auto 24px auto;
+  border: 1px solid $complement;
   width: 60%;
   margin-left: auto;
   margin-right: auto;
@@ -92,11 +98,16 @@ h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
 .boards, .icons, .board-input {
   background: $complement;
   color: $background;
-  max-width: 320px;
+  width: 80%;
+  min-height: 96px;
   border: 2px solid $background;
   a {
     color: $background;
   }
+}
+
+.icons {
+  padding-top: 40px;
 }
 
 .delete {
@@ -114,7 +125,7 @@ h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
 }
 
 .board-input {
-  font-size: 1.25rem;
+  width: 60%;
 }
 
 .decks, .deck-input {
