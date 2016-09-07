@@ -71,11 +71,15 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _BoardGrid = __webpack_require__(270);
+	var _Fork = __webpack_require__(270);
+	
+	var _Fork2 = _interopRequireDefault(_Fork);
+	
+	var _BoardGrid = __webpack_require__(271);
 	
 	var _BoardGrid2 = _interopRequireDefault(_BoardGrid);
 	
-	var _Board = __webpack_require__(273);
+	var _Board = __webpack_require__(274);
 	
 	var _Board2 = _interopRequireDefault(_Board);
 	
@@ -90,7 +94,8 @@
 	    _react2.default.createElement(
 	      _reactRouter.Route,
 	      { path: '/', component: _App2.default },
-	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _BoardGrid2.default }),
+	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Fork2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/demo', component: _BoardGrid2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/view/:boardId', component: _Board2.default, id: ':boardId' })
 	    )
 	  )
@@ -29348,6 +29353,63 @@
 	  value: true
 	});
 	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(173);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Fork = _react2.default.createClass({
+	  displayName: 'Fork',
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'fork' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'fork-login' },
+	        _react2.default.createElement(
+	          'h2',
+	          { className: 'login' },
+	          'Log in / Register'
+	        ),
+	        _react2.default.createElement(
+	          'h2',
+	          { className: 'coming-soon' },
+	          'Coming soon!'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/demo' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'fork-demo' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'demo'
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	exports.default = Fork;
+
+/***/ },
+/* 271 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _react = __webpack_require__(2);
@@ -29356,11 +29418,11 @@
 	
 	var _reactRedux = __webpack_require__(236);
 	
-	var _Icon = __webpack_require__(271);
+	var _Icon = __webpack_require__(272);
 	
 	var _Icon2 = _interopRequireDefault(_Icon);
 	
-	var _BoardInput = __webpack_require__(272);
+	var _BoardInput = __webpack_require__(273);
 	
 	var _BoardInput2 = _interopRequireDefault(_BoardInput);
 	
@@ -29398,7 +29460,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapActionsToDispatch)(BoardGrid);
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29449,7 +29511,7 @@
 	exports.default = Icon;
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29491,7 +29553,7 @@
 	exports.default = BoardInput;
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29510,11 +29572,11 @@
 	
 	var _reactRouter = __webpack_require__(173);
 	
-	var _Deck = __webpack_require__(274);
+	var _Deck = __webpack_require__(275);
 	
 	var _Deck2 = _interopRequireDefault(_Deck);
 	
-	var _DeckInput = __webpack_require__(277);
+	var _DeckInput = __webpack_require__(278);
 	
 	var _DeckInput2 = _interopRequireDefault(_DeckInput);
 	
@@ -29565,7 +29627,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapActionsToDispatch)(Board);
 
 /***/ },
-/* 274 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29584,11 +29646,11 @@
 	
 	var _reactRouter = __webpack_require__(173);
 	
-	var _Card = __webpack_require__(275);
+	var _Card = __webpack_require__(276);
 	
 	var _Card2 = _interopRequireDefault(_Card);
 	
-	var _CardInput = __webpack_require__(276);
+	var _CardInput = __webpack_require__(277);
 	
 	var _CardInput2 = _interopRequireDefault(_CardInput);
 	
@@ -29650,7 +29712,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapActionsToDispatch)(Deck);
 
 /***/ },
-/* 275 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29699,7 +29761,7 @@
 	exports.default = Card;
 
 /***/ },
-/* 276 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29741,7 +29803,7 @@
 	exports.default = CardInput;
 
 /***/ },
-/* 277 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
