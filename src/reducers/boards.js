@@ -2,7 +2,7 @@ import guid from '../data/guid';
 
 function addCard(boards, boardId, j, text){
   return boards.map(function(board, index) {
-    if (board.decks[j]) {
+    if ((board.id === boardId) && board.decks[j]) {
       board.decks[j].cards = [...board.decks[j].cards, {
           id: guid(),
           text: text
