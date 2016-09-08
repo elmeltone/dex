@@ -25,6 +25,11 @@ const Board = React.createClass({
     let board = this.props.boards.find(board => board.id == this.props.params.boardId);
     return (
       <div className='boards'>
+        <Link to="/demo">
+          <div className="board-demo">
+            <h4 className="demo-link">demo home</h4>
+          </div>
+        </Link>
         <h3>{board.title}</h3>
         {board.decks.map((deck, j) => <Deck {...this.props} key={j} j={j} deck={deck} />)}
         <DeckInput onSubmit={(deck) => this.handleAddDeck(deck)} board={board} cards={[]} {...this.props} />

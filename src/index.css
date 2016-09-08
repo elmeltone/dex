@@ -381,14 +381,14 @@ textarea {
 /***** Mixins ******/
 /***** General Styles ******/
 * {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px; }
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px; }
 
 body {
-  background: #1e7b1e;
-  color: #32cd32;
+  background: #1c79b1;
+  color: #155b85;
   padding: 8px;
   text-align: center;
   font-size: 60px; }
@@ -399,37 +399,52 @@ input {
   margin: 4px; }
 
 a {
-  color: #32cd32; }
+  color: #155b85; }
 
 figure {
   margin: 4px; }
 
 /***** Detailed Styles ******/
-h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
+h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .decks, .cards, .add {
   margin: 2px auto;
-  padding: 4px;
+  padding: 8px;
   position: relative; }
 
 .masthead, .boards {
   text-decoration: underline; }
 
-#masthead {
-  background: #155b85;
-  color: #32cd32;
+#masthead, .fork {
+  background: #32cd32;
+  color: #155b85;
   margin: 16px auto 24px auto;
-  border: 1px solid #32cd32;
+  border: 1px solid #155b85;
   width: 60%;
   margin-left: auto;
   margin-right: auto; }
 
-.boards, .icons, .board-input {
-  background: #32cd32;
-  color: #155b85;
+.fork, .fork-demo, .fork-login, .boards, .board-demo, .icons, .board-input {
+  background: #155b85;
+  color: #32cd32;
   width: 80%;
-  min-height: 96px;
-  border: 2px solid #155b85; }
-  .boards a, .icons a, .board-input a {
-    color: #155b85; }
+  border: 2px solid #32cd32; }
+  .fork a, .fork-demo a, .fork-login a, .boards a, .board-demo a, .icons a, .board-input a {
+    color: #32cd32; }
+
+.fork {
+  margin: 20% auto 10% auto;
+  padding: 60px 20px;
+  background: #32cd32; }
+
+.fork-demo, .fork-login {
+  height: 250px; }
+
+.demo-link {
+  margin-top: 10%; }
+
+.login {
+  padding: 12px 12px 0 12px;
+  margin: 5% auto;
+  opacity: .65; }
 
 .icons {
   padding-top: 40px; }
@@ -450,20 +465,20 @@ h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
   width: 60%; }
 
 .decks, .deck-input {
-  background: #155b85;
-  color: #32cd32; }
+  background: #32cd32;
+  color: #155b85; }
 
 .add {
-  border: 1px solid #1a73a8;
-  background: #155b85; }
+  border: 1px solid #53d553;
+  background: #32cd32; }
 
 .cards {
-  background: #1a73a8;
-  color: #32cd32;
-  border: 2px solid #155b85;
+  background: #53d553;
+  color: #155b85;
+  border: 2px solid #32cd32;
   font-size: .9rem; }
 
 .card-input {
   margin: 4px 0;
-  background: #1a73a8;
-  color: #32cd32; }
+  background: #53d553;
+  color: #155b85; }

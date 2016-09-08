@@ -5,8 +5,8 @@ Author: Michael J Melton <michael@meltwebs.com>
 
 /***** Colors ******/
 
-$background: lighten(#0E3D59, 10%);
-$complement: #32cd32;
+$background: #32cd32;
+$complement: lighten(#0E3D59, 10%);
 $anchor: #F29F05;
 $message: #F25C05;
 $emphasis: #D92525;
@@ -48,11 +48,11 @@ $plain: #ffffff;
 /***** General Styles ******/
 
 * {
-  @include border-radius(4px);
+  @include border-radius(8px);
 }
 
 body {
-  background: darken($complement, 20%);
+  background: lighten($complement, 10%);
   color: $complement;
   padding: 8px;
   text-align: center;
@@ -75,9 +75,9 @@ figure {
 
 /***** Detailed Styles ******/
 
-h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
+h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .decks, .cards, .add {
   margin: 2px auto;
-  padding: 4px;
+  padding: 8px;
   position: relative;
 }
 
@@ -85,7 +85,7 @@ h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
   text-decoration: underline;
 }
 
-#masthead {
+#masthead, .fork {
   background: $background;
   color: $complement;
   margin: 16px auto 24px auto;
@@ -95,15 +95,34 @@ h2, h3, p, .masthead, .icons, .boards, .decks, .cards, .add {
   margin-right: auto;
 }
 
-.boards, .icons, .board-input {
+.fork, .fork-demo, .fork-login, .boards, .board-demo, .icons, .board-input {
   background: $complement;
   color: $background;
   width: 80%;
-  min-height: 96px;
   border: 2px solid $background;
   a {
     color: $background;
   }
+}
+
+.fork {
+  margin: 20% auto 10% auto;
+  padding: 60px 20px;
+  background: $background;
+}
+
+.fork-demo, .fork-login {
+  height: 250px;
+}
+
+.demo-link {
+  margin-top: 10%;
+}
+
+.login {
+  padding: 12px 12px 0 12px;
+  margin: 5% auto;
+  opacity: .65;
 }
 
 .icons {

@@ -29368,20 +29368,6 @@
 	      'div',
 	      { className: 'fork' },
 	      _react2.default.createElement(
-	        'div',
-	        { className: 'fork-login' },
-	        _react2.default.createElement(
-	          'h2',
-	          { className: 'login' },
-	          'Log in / Register'
-	        ),
-	        _react2.default.createElement(
-	          'h2',
-	          { className: 'coming-soon' },
-	          'Coming soon!'
-	        )
-	      ),
-	      _react2.default.createElement(
 	        _reactRouter.Link,
 	        { to: '/demo' },
 	        _react2.default.createElement(
@@ -29389,9 +29375,23 @@
 	          { className: 'fork-demo' },
 	          _react2.default.createElement(
 	            'h2',
-	            null,
+	            { className: 'demo-link' },
 	            'demo'
 	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'fork-login' },
+	        _react2.default.createElement(
+	          'h5',
+	          { className: 'login' },
+	          'Log in / Register'
+	        ),
+	        _react2.default.createElement(
+	          'h5',
+	          { className: 'login' },
+	          'coming soon'
 	        )
 	      )
 	    );
@@ -29609,6 +29609,19 @@
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'boards' },
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/demo' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'board-demo' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'demo-link' },
+	            'demo home'
+	          )
+	        )
+	      ),
 	      _react2.default.createElement(
 	        'h3',
 	        null,
