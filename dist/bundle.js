@@ -29369,7 +29369,7 @@
 	      { className: 'fork' },
 	      _react2.default.createElement(
 	        _reactRouter.Link,
-	        { to: '/demo' },
+	        { className: 'fork-link-container', to: '/demo' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'fork-demo' },
@@ -29385,7 +29385,7 @@
 	        { className: 'fork-login' },
 	        _react2.default.createElement(
 	          'h5',
-	          { className: 'login' },
+	          { className: 'login line1' },
 	          'Log in / Register'
 	        ),
 	        _react2.default.createElement(

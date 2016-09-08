@@ -442,7 +442,6 @@ h5, h4, .masthead, .board-demo {
     color: #32cd32; }
 
 .fork {
-  height: 70vh;
   margin: 2% auto 5% auto;
   padding: 0;
   background: #32cd32;
@@ -450,6 +449,7 @@ h5, h4, .masthead, .board-demo {
 
 .fork-demo, .fork-login {
   height: 35%;
+  max-height: 250px;
   padding: 12% 0 0 0;
   border: 4px solid #1c79b1; }
 
@@ -522,3 +522,37 @@ h5, h4, .masthead, .board-demo {
 
 .card-input {
   margin: 4px 0; }
+
+@media only screen and (max-width: 400px) {
+  .fork {
+    height: 70vh; } }
+
+@media screen and (min-width: 401px) {
+  body {
+    font-size: 2rem; }
+  .cards {
+    font-size: 1.5rem; }
+  .demo-title {
+    padding-top: 0%; }
+  .fork-demo, .fork-login {
+    padding: 0; }
+  .line1 {
+    margin-bottom: 0; }
+  .decks {
+    padding: 16px; } }
+
+@media screen and (min-width: 901px) {
+  .demo-title {
+    padding-top: 0;
+    margin: 20px auto; }
+  .deck-input {
+    line-height: 40px; } }
+
+@media screen and (min-width: 1051px) {
+  .fork {
+    height: 75vh; }
+  .fork-demo, .fork-login {
+    height: 35vh;
+    margin: 2.5vh auto; }
+  .demo-title, .login {
+    margin-top: 10vh; } }
