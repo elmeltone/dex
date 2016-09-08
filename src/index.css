@@ -486,7 +486,7 @@ h5, h4, .masthead, .board-demo {
   width: 60%; }
 
 .board-demo {
-  font-size: 36px;
+  font-size: 18px;
   width: 50%;
   text-decoration: underline;
   background: #32cd32;
@@ -494,10 +494,18 @@ h5, h4, .masthead, .board-demo {
   padding: 0;
   margin: 0 auto; }
 
+.demo-link {
+  margin: 0; }
+
+.decks {
+  padding: 0 5% 5% 5%; }
+
 .decks, .deck-input {
   background: #32cd32;
-  color: #155b85;
-  padding: 0 5% 5% 5%; }
+  color: #155b85; }
+
+.deck-input {
+  padding: 5%; }
 
 .add {
   border: 1px solid #53d553;

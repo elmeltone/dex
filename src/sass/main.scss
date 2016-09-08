@@ -175,7 +175,7 @@ h5, h4, .masthead, .board-demo {
 }
 
 .board-demo {
-  font-size: 36px;
+  font-size: 18px;
   width: 50%;
   text-decoration: underline;
   background: $background;
@@ -184,10 +184,21 @@ h5, h4, .masthead, .board-demo {
   margin: 0 auto;
 }
 
+.demo-link {
+  margin: 0;
+}
+
+.decks {
+  padding: 0 5% 5% 5%;
+}
+
 .decks, .deck-input {
   background: $background;
   color: $complement;
-  padding: 0 5% 5% 5%;
+}
+
+.deck-input {
+  padding: 5%;
 }
 
 .add {
