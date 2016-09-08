@@ -29386,12 +29386,7 @@
 	        _react2.default.createElement(
 	          'h5',
 	          { className: 'login' },
-	          'Log in / Register'
-	        ),
-	        _react2.default.createElement(
-	          'h5',
-	          { className: 'login' },
-	          'coming soon'
+	          'Log in / Register coming soon'
 	        )
 	      )
 	    );

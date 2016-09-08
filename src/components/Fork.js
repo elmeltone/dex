@@ -11,8 +11,7 @@ const Fork = React.createClass({
           </div>
         </Link>
         <div className="fork-login">
-          <h5 className="login">Log in / Register</h5>
-          <h5 className="login">coming soon</h5>
+          <h5 className="login">Log in / Register coming soon</h5>
         </div>
       </div>
     )

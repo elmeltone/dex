@@ -381,17 +381,17 @@ textarea {
 /***** Mixins ******/
 /***** General Styles ******/
 * {
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  border-radius: 8px; }
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  border-radius: 12px; }
 
 body {
   background: #1c79b1;
   color: #155b85;
   padding: 8px;
   text-align: center;
-  font-size: 60px; }
+  font-size: 30px; }
 
 input {
   text-align: center;
@@ -406,39 +406,49 @@ figure {
   margin: 4px; }
 
 /***** Detailed Styles ******/
-h2, h3, h4, h5, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .decks, .cards, .add {
-  margin: 20px auto;
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0; }
+
+h2, h3, h4, h5, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .decks, .cards, .add {
+  margin: 8px auto;
   padding: 8px;
   position: relative; }
 
-.masthead, .boards {
+h5, h4, .masthead, .board-demo {
   text-decoration: underline; }
 
 #masthead, .fork {
   background: #32cd32;
   color: #155b85;
-  margin: 16px auto 24px auto;
-  border: 1px solid #155b85;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto; }
+  margin: 0 auto 16px auto;
+  border: 4px solid #155b85;
+  width: 80%; }
+
+#masthead:hover, .fork-demo:hover, .icons:hover, .demo-link:hover, input:hover {
+  opacity: .8; }
 
 .fork, .fork-demo, .fork-login, .boards, .icons, .board-input {
   background: #155b85;
   color: #32cd32;
   width: 80%;
   min-height: 96px;
-  border: 2px solid #32cd32; }
+  border: 4px solid #155b85; }
   .fork a, .fork-demo a, .fork-login a, .boards a, .icons a, .board-input a {
     color: #32cd32; }
 
 .fork {
-  margin: 15% auto 10% auto;
-  padding: 60px 20px;
+  height: 0%;
+  margin: 2% auto 5% auto;
+  padding: 0;
   background: #32cd32; }
 
 .fork-demo, .fork-login {
-  height: 250px; }
+  height: 45%;
+  padding: 5% 0 0 0;
+  border: 4px solid #1c79b1; }
 
 .demo-title {
   padding-top: 10%;
@@ -447,7 +457,8 @@ h2, h3, h4, h5, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-d
 .login {
   padding: 12px 12px 0 12px;
   margin: 5% auto;
-  opacity: .65; }
+  opacity: .65;
+  font-size: .95rem; }
 
 .icons {
   padding-top: 45px; }
@@ -482,7 +493,7 @@ h2, h3, h4, h5, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-d
 .decks, .deck-input {
   background: #32cd32;
   color: #155b85;
-  padding: 0 10%; }
+  padding: 0 5% 5% 5%; }
 
 .add {
   border: 1px solid #53d553;
