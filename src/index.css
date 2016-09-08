@@ -396,7 +396,8 @@ body {
 input {
   text-align: center;
   border: none;
-  margin: 4px; }
+  margin: 4px;
+  max-width: 80%; }
 
 a {
   color: #155b85; }
@@ -405,8 +406,8 @@ figure {
   margin: 4px; }
 
 /***** Detailed Styles ******/
-h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .decks, .cards, .add {
-  margin: 2px auto;
+h2, h3, h4, h5, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .decks, .cards, .add {
+  margin: 20px auto;
   padding: 8px;
   position: relative; }
 
@@ -422,24 +423,26 @@ h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .de
   margin-left: auto;
   margin-right: auto; }
 
-.fork, .fork-demo, .fork-login, .boards, .board-demo, .icons, .board-input {
+.fork, .fork-demo, .fork-login, .boards, .icons, .board-input {
   background: #155b85;
   color: #32cd32;
   width: 80%;
+  min-height: 96px;
   border: 2px solid #32cd32; }
-  .fork a, .fork-demo a, .fork-login a, .boards a, .board-demo a, .icons a, .board-input a {
+  .fork a, .fork-demo a, .fork-login a, .boards a, .icons a, .board-input a {
     color: #32cd32; }
 
 .fork {
-  margin: 20% auto 10% auto;
+  margin: 15% auto 10% auto;
   padding: 60px 20px;
   background: #32cd32; }
 
 .fork-demo, .fork-login {
   height: 250px; }
 
-.demo-link {
-  margin-top: 10%; }
+.demo-title {
+  padding-top: 10%;
+  margin: 0; }
 
 .login {
   padding: 12px 12px 0 12px;
@@ -447,7 +450,7 @@ h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .de
   opacity: .65; }
 
 .icons {
-  padding-top: 40px; }
+  padding-top: 45px; }
 
 .delete {
   font-size: .75rem;
@@ -464,9 +467,22 @@ h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .de
 .board-input {
   width: 60%; }
 
+.board-grid {
+  margin-top: 40px; }
+
+.board-demo {
+  font-size: 36px;
+  width: 50%;
+  text-decoration: underline;
+  background: #32cd32;
+  color: #155b85;
+  padding: 0;
+  margin: 0 auto; }
+
 .decks, .deck-input {
   background: #32cd32;
-  color: #155b85; }
+  color: #155b85;
+  padding: 0 10%; }
 
 .add {
   border: 1px solid #53d553;

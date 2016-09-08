@@ -7,7 +7,7 @@ const Fork = React.createClass({
       <div className='fork'>
         <Link to="/demo">
           <div className="fork-demo">
-            <h2 className="demo-link">demo</h2>
+            <h2 className="demo-title">demo</h2>
           </div>
         </Link>
         <div className="fork-login">

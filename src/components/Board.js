@@ -27,7 +27,7 @@ const Board = React.createClass({
       <div className='boards'>
         <Link to="/demo">
           <div className="board-demo">
-            <h4 className="demo-link">demo home</h4>
+            <p className="demo-link">demo home</p>
           </div>
         </Link>
         <h3>{board.title}</h3>

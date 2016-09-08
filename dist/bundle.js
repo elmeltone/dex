@@ -29375,7 +29375,7 @@
 	          { className: 'fork-demo' },
 	          _react2.default.createElement(
 	            'h2',
-	            { className: 'demo-link' },
+	            { className: 'demo-title' },
 	            'demo'
 	          )
 	        )
@@ -29616,7 +29616,7 @@
 	          'div',
 	          { className: 'board-demo' },
 	          _react2.default.createElement(
-	            'h4',
+	            'p',
 	            { className: 'demo-link' },
 	            'demo home'
 	          )

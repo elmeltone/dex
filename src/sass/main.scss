@@ -63,6 +63,7 @@ input {
   text-align: center;
   border: none;
   margin: 4px;
+  max-width: 80%;
 }
 
 a {
@@ -75,8 +76,8 @@ figure {
 
 /***** Detailed Styles ******/
 
-h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .decks, .cards, .add {
-  margin: 2px auto;
+h2, h3, h4, h5, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .decks, .cards, .add {
+  margin: 20px auto;
   padding: 8px;
   position: relative;
 }
@@ -95,10 +96,11 @@ h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .de
   margin-right: auto;
 }
 
-.fork, .fork-demo, .fork-login, .boards, .board-demo, .icons, .board-input {
+.fork, .fork-demo, .fork-login, .boards, .icons, .board-input {
   background: $complement;
   color: $background;
   width: 80%;
+  min-height: 96px;
   border: 2px solid $background;
   a {
     color: $background;
@@ -106,7 +108,7 @@ h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .de
 }
 
 .fork {
-  margin: 20% auto 10% auto;
+  margin: 15% auto 10% auto;
   padding: 60px 20px;
   background: $background;
 }
@@ -115,8 +117,9 @@ h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .de
   height: 250px;
 }
 
-.demo-link {
-  margin-top: 10%;
+.demo-title {
+  padding-top: 10%;
+  margin: 0;
 }
 
 .login {
@@ -126,7 +129,7 @@ h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .de
 }
 
 .icons {
-  padding-top: 40px;
+  padding-top: 45px;
 }
 
 .delete {
@@ -147,9 +150,24 @@ h2, h3, p, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo, .de
   width: 60%;
 }
 
+.board-grid {
+  margin-top: 40px;
+}
+
+.board-demo {
+  font-size: 36px;
+  width: 50%;
+  text-decoration: underline;
+  background: $background;
+  color: $complement;
+  padding: 0;
+  margin: 0 auto;
+}
+
 .decks, .deck-input {
   background: $background;
   color: $complement;
+  padding: 0 10%;
 }
 
 .add {
