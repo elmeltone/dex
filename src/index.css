@@ -391,7 +391,7 @@ body {
   color: #155b85;
   padding: 8px;
   text-align: center;
-  font-size: 30px; }
+  font-size: 24px; }
 
 input {
   text-align: center;
@@ -420,12 +420,14 @@ h2, h3, h4, h5, .masthead, .fork-demo, .fork-login, .icons, .boards, .board-demo
 h5, h4, .masthead, .board-demo {
   text-decoration: underline; }
 
+#masthead {
+  width: 75%; }
+
 #masthead, .fork {
   background: #32cd32;
   color: #155b85;
   margin: 0 auto 16px auto;
-  border: 4px solid #155b85;
-  width: 80%; }
+  border: 4px solid #155b85; }
 
 #masthead:hover, .fork-demo:hover, .icons:hover, .demo-link:hover, input:hover {
   opacity: .8; }
@@ -434,20 +436,21 @@ h5, h4, .masthead, .board-demo {
   background: #155b85;
   color: #32cd32;
   width: 80%;
-  min-height: 96px;
+  min-height: 48px;
   border: 4px solid #155b85; }
   .fork a, .fork-demo a, .fork-login a, .boards a, .icons a, .board-input a {
     color: #32cd32; }
 
 .fork {
-  height: 0%;
+  height: 70vh;
   margin: 2% auto 5% auto;
   padding: 0;
-  background: #32cd32; }
+  background: #32cd32;
+  width: 80%; }
 
 .fork-demo, .fork-login {
-  height: 45%;
-  padding: 5% 0 0 0;
+  height: 35%;
+  padding: 12% 0 0 0;
   border: 4px solid #1c79b1; }
 
 .demo-title {
