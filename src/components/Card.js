@@ -5,8 +5,8 @@ const Card = React.createClass({
   render() {
     const { card } = this.props;
     return (
-      <div className='cards'>
-        <p>{card.text}</p>
+      <div className="cards">
+        <p className="card-text">{card.text}</p>
         <span
             className="delete card"
             onClick={this.props.deleteCard.bind(null, this.props.params.boardId, this.props.j, this.props.k)}

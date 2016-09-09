@@ -67,11 +67,11 @@ const boards = [
           "id":"2",
           "cards":[
             {
-              "text":"New project management site",
+              "text":"Beltless trench coats",
               "id":"0"
             },
             {
-              "text":"Compartmental creative space for writers",
+              "text":"Coffee table book about coffee tables",
               "id":"1"
             }
           ]
