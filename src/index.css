@@ -548,6 +548,10 @@ h5, h4, .masthead, .board-demo {
   .decks {
     padding: 16px; } }
 
+@media screen and (min-width: 575px) {
+  .fork {
+    margin-top: 40px; } }
+
 @media screen and (min-width: 901px) {
   .demo-title {
     padding-top: 0;
