@@ -443,7 +443,7 @@ h5, h4, .masthead, .board-demo {
     color: #32cd32; }
 
 .fork {
-  margin: 2% auto 5% auto;
+  margin: 8% auto 5% auto;
   padding: 0;
   background: #32cd32;
   width: 80%;
@@ -452,11 +452,11 @@ h5, h4, .masthead, .board-demo {
 .fork-demo, .fork-login {
   height: 35%;
   max-height: 250px;
-  padding: 12% 0 0 0;
+  padding: 6% 0;
   border: 2px solid #1c79b1; }
 
 .demo-title {
-  padding-top: 10%;
+  padding-top: 5%;
   margin: 0; }
 
 .login {
@@ -543,8 +543,6 @@ h5, h4, .masthead, .board-demo {
     font-size: 1.5rem; }
   .demo-title {
     padding-top: 0%; }
-  .fork-demo, .fork-login {
-    padding: 0; }
   .line1 {
     margin-bottom: 0; }
   .decks {
